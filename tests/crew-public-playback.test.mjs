@@ -62,11 +62,11 @@ test('tanpa founder tidak ada The Owner; founder saja tidak membuat judul The Cr
   const tree=await component.default({members,preview:false});const headings=nodes(tree).filter(node=>node.type==='h2').map(node=>node.props.children).filter(value=>['The Owner','The Crew'].includes(value));assert.deepEqual(headings,expected);
  }
 });
-async function heroWithPlayer({blocked=false,reduced=false}={}){
+async function heroWithPlayer({blocked=false,reduced=false,filmTitle="Film"}={}){
  const effects=[],updates=[];let index=0,play=0,pause=0;
  const player={play:()=>{play++;return blocked?Promise.reject(new Error('autoplay blocked')):Promise.resolve();},pause:()=>pause++};
  const component=await load('../src/components/wedding/WeddingHero.tsx',{'react':{useState:initial=>{const n=index++;return [initial,value=>updates.push([n,value])];},useRef:()=>({current:player}),useEffect:fn=>effects.push(fn)},'next-intl':{useTranslations:()=>translate},'next/image':{default:stub},'@/icons':{ChevronDownIcon:stub},'./Wedding.module.css':{default:{}}});
- const tree=component.default({title:'Livina',subtitle:'Love',video:'/api/wedding/media/video',poster:'/poster',filmTitle:'Film'});
+ const tree=component.default({title:'Livina',subtitle:'Love',video:'/api/wedding/media/video',poster:'/poster',filmTitle});
  const previous=globalThis.window;globalThis.window={matchMedia:()=>({matches:reduced})};let cleanup;
  try{cleanup=effects[0]();await new Promise(resolve=>setImmediate(resolve));}finally{globalThis.window=previous;}
  return {tree,player,updates,cleanup,play:()=>play,pause:()=>pause};
@@ -81,4 +81,11 @@ test('autoplay diblokir membuka kontrol, bukan mengganti video dengan poster err
 test('Style 2 tetap video dengan kontrol tanpa autoplay/loop',async()=>{
  const film=await load('../src/components/wedding-luxe/LuxeFilm.tsx',{'react':{useState:value=>[value,()=>{}]},'next-intl':{useTranslations:()=>translate},'next/image':{default:stub},'./Luxe.module.css':{default:{}}});
  const video=nodes(film.default({video:'/video',poster:'/poster',title:'Film'})).find(node=>node.type==='video');assert.equal(video.props.controls,true);assert.equal(video.props.loop,undefined);assert.equal(video.props.autoPlay,undefined);
+});
+
+
+test('teks film Style 1 menjadi blok sebelum section video, di luar lapisan sticky/media',async()=>{
+ const run=await heroWithPlayer({filmTitle:'Cinta dalam setiap detail.'});const all=nodes(run.tree),title=all.find(node=>node.props?.id==='livina-film-title'),film=all.find(node=>node.props?.id==='livina-film');
+ assert.equal(title.props.children,'Cinta dalam setiap detail.');assert.ok(all.indexOf(title)<all.indexOf(film));assert.equal(nodes(film).includes(title),false);run.cleanup();
+ const empty=await heroWithPlayer({filmTitle:''});assert.equal(nodes(empty.tree).some(node=>node.props?.id==='livina-film-title'),false);empty.cleanup();
 });

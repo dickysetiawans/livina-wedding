@@ -9,6 +9,7 @@ import CrewDialog from "@/components/crew/CrewDialog";
 import Button from "@/components/ui/button/Button";
 import {
   modules,
+  serviceSlug,
   emptyValues,
   validateAdminValues,
   type AdminRecord,
@@ -90,7 +91,13 @@ function AdminEditorForm({
     }
   }
   function change(key: string, next: AdminValue) {
-    setValue((current) => ({ ...current, [key]: next }));
+    setValue((current) => ({
+      ...current,
+      [key]: next,
+      ...(module === "services" && key === "title"
+        ? { slug: serviceSlug(next) }
+        : {}),
+    }));
     setErrors((current) => ({ ...current, [key]: "" }));
   }
   const content = (
@@ -105,7 +112,11 @@ function AdminEditorForm({
         className="grid min-w-0 grid-cols-1 gap-5 lg:grid-cols-2"
       >
         {definition.fields
-          .filter((field) => !record || field.key !== "auth_user_id")
+          .filter(
+            (field) =>
+              (!record || field.key !== "auth_user_id") &&
+              !(module === "services" && field.key === "slug"),
+          )
           .map((field) => (
             <div
               key={field.key}
@@ -164,6 +175,13 @@ function AdminEditorForm({
                   )
                 }
               />
+              {module === "services" && field.key === "title" && (
+                <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                  {t("serviceSlugAuto", {
+                    slug: String(value.slug || serviceSlug(value.title)),
+                  })}
+                </p>
+              )}
             </div>
           ))}
       </fieldset>

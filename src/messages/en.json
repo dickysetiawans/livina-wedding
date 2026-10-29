@@ -1355,7 +1355,8 @@
     "previewTemplate": "Buka pratinjau",
     "activateTemplate": "Aktifkan template",
     "templateSaved": "Template aktif berhasil disimpan. Pengunjung halaman utama akan diarahkan ke template ini.",
-    "deletePermissionHint": "Hapus {name}? Permission ini juga akan dilepas dari seluruh role yang menggunakannya."
+    "deletePermissionHint": "Hapus {name}? Permission ini juga akan dilepas dari seluruh role yang menggunakannya.",
+    "serviceSlugAuto": "Slug otomatis: {slug}. Jika sudah dipakai, nomor ditambahkan saat disimpan."
   },
   "websiteSettings": {
     "intro": "Satu pengaturan untuk Style 1 dan Style 2: identitas, video utama, bagian Cinta dalam setiap detail, serta daftar kontak. Terbitkan agar perubahan tampil di website.",

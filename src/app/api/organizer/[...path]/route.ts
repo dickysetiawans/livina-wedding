@@ -7,6 +7,7 @@ import {
 } from "@/lib/auth/server";
 import {
   moduleCodes,
+  serviceSlug,
   modules,
   adminPayload,
   validateAdminValues,
@@ -132,7 +133,7 @@ async function handle(request: Request, params: Promise<{ path: string[] }>) {
         body = JSON.stringify(value);
       }
     }
-    const response = await supabaseFetch(
+    let response = await supabaseFetch(
       path + new URL(request.url).search,
       session.token,
       {
@@ -143,6 +144,38 @@ async function handle(request: Request, params: Promise<{ path: string[] }>) {
           : {},
       },
     );
+    // The database unique constraint arbitrates concurrent requests. Retry only
+    // slug collisions; never hide permission, validation or other DB failures.
+    if (
+      moduleCode === "services" &&
+      body &&
+      ["POST", "PATCH"].includes(request.method)
+    ) {
+      const payload = JSON.parse(body),
+        baseSlug = serviceSlug(payload.title);
+      for (let suffix = 2; suffix <= 11 && response.status === 409; suffix++) {
+        const conflict = await response
+          .clone()
+          .json()
+          .catch(() => null);
+        if (
+          conflict?.code !== "23505" ||
+          !String(conflict.message || "").includes("slug")
+        )
+          break;
+        const slug = `${baseSlug}-${suffix}`;
+        if (slug === payload.slug) continue;
+        payload.slug = slug;
+        response = await supabaseFetch(
+          path + new URL(request.url).search,
+          session.token,
+          {
+            method: request.method,
+            body: JSON.stringify(payload),
+          },
+        );
+      }
+    }
     if (
       response.ok &&
       path.startsWith("functions/") &&

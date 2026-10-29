@@ -146,17 +146,17 @@
   justify-content: center;
 }
 .filmTitle {
-  position: absolute;
-  z-index: 2;
-  inset-block-end: 8%;
-  inset-inline: 6%;
   margin: 0;
+  background: var(--ink);
+  padding-block: clamp(3rem, 8vw, 7rem);
+  padding-inline: 6%;
   color: var(--paper);
   font-family: var(--font-wedding-serif), serif;
   font-size: clamp(2rem, 5vw, 5rem);
+  font-weight: 400;
+  line-height: 1.2;
   text-align: center;
-  text-shadow: 0 2px 12px var(--ink);
-  pointer-events: none;
+  overflow-wrap: anywhere;
 }
 .filmMask {
   width: 100%;

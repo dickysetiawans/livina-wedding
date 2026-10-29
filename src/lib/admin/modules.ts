@@ -159,11 +159,31 @@ export function emptyValues(module: ModuleCode): AdminValues {
     ]),
   );
 }
+export function serviceSlug(title: unknown): string {
+  return (
+    (typeof title === "string" ? title : "")
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 145)
+      .replace(/-+$/g, "") || "service"
+  );
+}
+function automaticSlug(value: AdminValues, editing: boolean) {
+  // Keep an existing slug on edits unless the title field generated a new one.
+  return editing && typeof value.slug === "string" && value.slug.trim()
+    ? value.slug.trim()
+    : serviceSlug(value.title);
+}
 export function validateAdminValues(
   module: ModuleCode,
   value: AdminValues,
   editing = false,
 ): Record<string, string> {
+  if (module === "services")
+    value = { ...value, slug: automaticSlug(value, editing) };
   const errors: Record<string, string> = {};
   for (const field of modules[module].fields) {
     if (editing && field.createOnly) continue;
@@ -261,6 +281,8 @@ export function adminPayload(
   value: AdminValues,
   editing = false,
 ): AdminValues {
+  if (module === "services")
+    value = { ...value, slug: automaticSlug(value, editing) };
   return Object.fromEntries(
     modules[module].fields
       .filter((field) => !(editing && field.createOnly))

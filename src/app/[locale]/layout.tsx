@@ -6,6 +6,7 @@ import "flatpickr/dist/flatpickr.css";
 import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Outfit } from "next/font/google";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import "simplebar-react/dist/simplebar.min.css";
 import "swiper/css/bundle";
@@ -14,6 +15,13 @@ import "../globals.css";
 const outfit = Outfit({
   subsets: ["latin"],
 });
+
+export const metadata: Metadata = {
+  icons: {
+    icon: [{ url: "/images/logo-livina.png", type: "image/png" }],
+    shortcut: "/images/logo-livina.png",
+  },
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

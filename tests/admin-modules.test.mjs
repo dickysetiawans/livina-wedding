@@ -118,3 +118,33 @@ test('pengaturan Website menerima detail kontak sampai batas yang didukung, tanp
  assert.equal(JSON.parse(calls[0][2].body).whatsapp_contacts.length,40);
  assert.equal(config.modules.website.singleton,true);
 });
+
+
+test('Service membuat slug dari judul tanpa input slug, membersihkan spasi, aksen dan tanda baca',()=>{
+ for(const [title,expected] of [['Wedding Planner','wedding-planner'],['  WEDDING   Organizer! ','wedding-organizer'],['Café & Décor','cafe-decor'],['婚礼','service']])assert.equal(config.serviceSlug(title),expected);
+ const value={...config.emptyValues('services'),title:'Wedding Planner',summary:'Ringkasan',description:'Deskripsi'};
+ assert.deepEqual(config.validateAdminValues('services',value),{});assert.equal(config.adminPayload('services',value).slug,'wedding-planner');assert.equal(config.adminPayload('services',{...value,slug:'forged-custom'}).slug,'wedding-planner');
+ assert.equal(config.adminPayload('services',{...value,slug:'wedding-planner-2'},true).slug,'wedding-planner-2');
+ assert.equal(config.adminPayload('services',{...value,slug:null},true).slug,'wedding-planner');
+ assert.equal(config.validateAdminValues('services',{...value,title:'   '}).title,'required');
+});
+test('API Service memberi akhiran nomor saat unique slug berbenturan, menggunakan JWT dan payload yang sama',async()=>{
+ identity={token:'same-user-token',context:{user:{role:'admin'},permissions:[]}};
+ const original=auth.supabaseFetch,attempts=[];
+ try {
+  auth.supabaseFetch=async(path,token,init)=>{const payload=JSON.parse(init.body);attempts.push({path,token,payload});return attempts.length<3?Response.json({code:'23505',message:'duplicate key violates unique constraint services_slug_key'},{status:409}):Response.json([{id:uuid,...payload}]);};
+  const value={...config.emptyValues('services'),title:'Wedding Planner',summary:'Ringkasan',description:'Deskripsi',created_by:'forged'};
+  const response=await request('POST','rest/v1/services',value);assert.equal(response.status,200);assert.deepEqual(attempts.map(row=>row.payload.slug),['wedding-planner','wedding-planner-2','wedding-planner-3']);assert.equal((await response.json())[0].slug,'wedding-planner-3');
+  assert.ok(attempts.every(row=>row.token==='same-user-token'&&!('created_by' in row.payload)));
+ }finally{auth.supabaseFetch=original;}
+});
+test('API Service tidak mengulang kegagalan izin atau konflik selain slug',async()=>{
+ identity={token:'test',context:{user:{role:'admin'},permissions:[]}};const original=auth.supabaseFetch;
+ try {
+  for(const [status,body] of [[403,{code:'42501'}],[409,{code:'23505',message:'duplicate services_pkey'}]]){
+   let attempts=0;auth.supabaseFetch=async()=>{attempts++;return Response.json(body,{status});};
+   const response=await request('POST','rest/v1/services',{...config.emptyValues('services'),title:'Wedding Planner',summary:'Ringkasan',description:'Deskripsi'});
+   assert.equal(response.status,status);assert.equal(attempts,1);
+  }
+ }finally{auth.supabaseFetch=original;}
+});

@@ -86,7 +86,13 @@ export default function WeddingHero({
           </div>
           {(video || poster || nextSection) && (
             <a
-              href={video || poster ? "#livina-film" : `#${nextSection}`}
+              href={
+                video || poster
+                  ? filmTitle
+                    ? "#livina-film-title"
+                    : "#livina-film"
+                  : `#${nextSection}`
+              }
               className={styles.scrollHint}
               aria-label={t("scroll")}
             >
@@ -96,43 +102,49 @@ export default function WeddingHero({
         </section>
       )}
       {(video || poster) && (
-        <section
-          id="livina-film"
-          className={styles.film}
-          aria-label={t("film")}
-        >
-          <div className={styles.filmSticky}>
-            {filmTitle && <h2 className={styles.filmTitle}>{filmTitle}</h2>}
-            <div className={styles.filmMask}>
-              {(!video || videoFailed) && poster ? (
-                <Image
-                  src={poster}
-                  alt=""
-                  fill
-                  sizes="100vw"
-                  unoptimized
-                  className={styles.filmMedia}
-                />
-              ) : video && !videoFailed ? (
-                <video
-                  ref={player}
-                  className={styles.filmMedia}
-                  autoPlay
-                  controls={manualPlay}
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  poster={poster || undefined}
-                  onError={() => setVideoFailed(true)}
-                  aria-label={t("film")}
-                >
-                  <source src={video} type="video/mp4" />
-                </video>
-              ) : null}
+        <>
+          {filmTitle && (
+            <h2 id="livina-film-title" data-reveal className={styles.filmTitle}>
+              {filmTitle}
+            </h2>
+          )}
+          <section
+            id="livina-film"
+            className={styles.film}
+            aria-label={t("film")}
+          >
+            <div className={styles.filmSticky}>
+              <div className={styles.filmMask}>
+                {(!video || videoFailed) && poster ? (
+                  <Image
+                    src={poster}
+                    alt=""
+                    fill
+                    sizes="100vw"
+                    unoptimized
+                    className={styles.filmMedia}
+                  />
+                ) : video && !videoFailed ? (
+                  <video
+                    ref={player}
+                    className={styles.filmMedia}
+                    autoPlay
+                    controls={manualPlay}
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    poster={poster || undefined}
+                    onError={() => setVideoFailed(true)}
+                    aria-label={t("film")}
+                  >
+                    <source src={video} type="video/mp4" />
+                  </video>
+                ) : null}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </>
       )}
     </>
   );
