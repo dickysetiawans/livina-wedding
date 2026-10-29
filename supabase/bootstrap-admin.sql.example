@@ -1,0 +1,10 @@
+-- Jalankan sendiri setelah membuat akun melalui Auth Dashboard.
+-- Ganti UUID dan nama. Tidak membuat password atau akun Auth.
+BEGIN;
+INSERT INTO organizer.users (id, role_id, name, email)
+SELECT a.id, r.id, 'Nama administrator', a.email
+FROM auth.users a CROSS JOIN organizer.roles r
+WHERE a.id = '00000000-0000-0000-0000-000000000000'::uuid
+  AND a.email IS NOT NULL AND r.code = 'admin';
+-- Pastikan INSERT menghasilkan tepat satu baris sebelum COMMIT.
+COMMIT;

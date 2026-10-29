@@ -1,0 +1,45 @@
+{
+  "meta": { "source": "preview", "total": 4 },
+  "data": [
+    {
+      "id": "preview-founder",
+      "name": "Nadia",
+      "role_title": "The Visionary Founder",
+      "biography": "Setiap cerita besar berawal dari perhatian pada hal kecil. Dengan visi yang tenang dan hati yang terbuka, ia membantu setiap pasangan menikmati perjalanan menuju hari istimewa.",
+      "is_founder": true,
+      "sort_order": 0,
+      "photo_media_id": null,
+      "photo_url": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=640&h=850&q=85"
+    },
+    {
+      "id": "preview-member-arga",
+      "name": "Arga",
+      "role_title": "The Experience Shaper",
+      "biography": "Membaca suasana, menyatukan energi, dan menjaga setiap rangkaian terasa hidup. Baginya, acara yang baik meninggalkan kenangan yang terasa personal.",
+      "is_founder": false,
+      "sort_order": 1,
+      "photo_media_id": null,
+      "photo_url": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=640&h=850&q=85"
+    },
+    {
+      "id": "preview-member-salsa",
+      "name": "Salsa",
+      "role_title": "The Creative Spark",
+      "biography": "Mengubah percakapan sederhana menjadi ide yang berkesan. Ia merangkai warna, detail, dan suasana agar setiap perayaan punya ceritanya sendiri.",
+      "is_founder": false,
+      "sort_order": 2,
+      "photo_media_id": null,
+      "photo_url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=640&h=850&q=85"
+    },
+    {
+      "id": "preview-member-dimas",
+      "name": "Dimas",
+      "role_title": "The Detail Keeper",
+      "biography": "Selangkah lebih awal untuk setiap kebutuhan. Ia menjaga waktu, koordinasi, dan detail di balik layar supaya Anda bisa hadir sepenuhnya dalam momen bahagia.",
+      "is_founder": false,
+      "sort_order": 3,
+      "photo_media_id": null,
+      "photo_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=640&h=850&q=85"
+    }
+  ]
+}

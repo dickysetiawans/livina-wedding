@@ -1,0 +1,1379 @@
+{
+  "mediaUpload": {
+    "photo": "Foto",
+    "choosePhoto": "Pilih foto",
+    "changePhoto": "Ganti foto",
+    "chooseVideo": "Pilih video",
+    "changeVideo": "Ganti video",
+    "remove": "Hapus pilihan",
+    "cancelSelection": "Batalkan pilihan baru",
+    "photoHint": "JPG, PNG, atau WebP, maksimal 5 MB. Foto diunggah setelah Anda menekan Simpan.",
+    "videoHint": "MP4 H.264, audio AAC atau tanpa audio. Maksimal 20 MB, 60 detik dan Full HD. Poster otomatis; video diunggah setelah menekan Simpan.",
+    "photoAlt": "Foto {name}",
+    "noUpload": "Akun Anda tidak memiliki izin mengunggah media.",
+    "uploading": "Mengunggah berkas…",
+    "processing": "Media sedang diproses. Tunggu hingga siap sebelum menyimpan form.",
+    "processingSlow": "Media belum siap atau statusnya belum dapat dibaca. Periksa lagi beberapa saat, atau batalkan pilihan baru.",
+    "processingFailed": "Media gagal diproses. Pilih berkas lain atau coba unggah kembali.",
+    "videoError": "Video belum dapat digunakan. Pilih MP4/WebM maksimal 40 MB dan periksa koneksi.",
+    "retry": "Periksa lagi",
+    "cropTitle": "Atur foto sebelum disimpan",
+    "cropHint": "Geser foto untuk mengatur posisi, lalu sesuaikan zoom. Tombol panah juga dapat digunakan untuk menggeser foto.",
+    "cropPosition": "Posisi foto dalam area potong",
+    "zoom": "Zoom",
+    "cancel": "Batal",
+    "usePhoto": "Gunakan foto",
+    "preparing": "Menyiapkan foto…",
+    "cropError": "Foto belum dapat dipotong. Coba pilih ulang berkas gambar yang valid.",
+    "videoFormat": "Gunakan video MP4 dengan codec H.264 dan audio AAC (atau tanpa audio). WebM, HEVC dan MP4 terfragmentasi perlu diekspor ulang terlebih dahulu.",
+    "videoLimit": "Video maksimal 20 MB, 60 detik dan Full HD (1920 × 1080 atau 1080 × 1920).",
+    "videoRead": "Video belum dapat dibaca. Coba pilih ulang atau ekspor ke MP4 H.264.",
+    "videoReading": "Menyiapkan preview dan poster video…",
+    "videoPosterAlt": "Poster video pernikahan"
+  },
+  "passwords": {
+    "changeTitle": "Ganti password",
+    "resetTitle": "Reset password pengguna",
+    "changeHint": "Masukkan password saat ini dan password baru. Setelah berhasil, masuk kembali menggunakan password baru.",
+    "resetHint": "Atur password baru untuk {name} langsung dari panel. Tidak ada tautan reset yang dikirim melalui email. Konfirmasi dengan password akun admin Anda.",
+    "currentPassword": "Password saat ini",
+    "adminPassword": "Password akun admin Anda",
+    "newPassword": "Password baru",
+    "confirmPassword": "Ulangi password baru",
+    "policy": "Minimal 12 karakter, mengandung huruf dan angka. Password baru harus berbeda dari password akun yang sedang masuk.",
+    "save": "Simpan password",
+    "saving": "Menyimpan…",
+    "cancel": "Batal",
+    "close": "Tutup",
+    "resetSuccess": "Password pengguna berhasil diubah. Pengguna dapat masuk menggunakan password baru.",
+    "changeSuccess": "Password berhasil diubah. Silakan masuk kembali.",
+    "errors": {
+      "currentInvalid": "Password akun Anda saat ini tidak cocok.",
+      "weak": "Password belum memenuhi kebijakan keamanan Supabase. Pilih password yang lebih kuat.",
+      "invalid": "Isi password saat ini dan password baru minimal 12 karakter, dengan huruf dan angka.",
+      "same": "Password baru harus berbeda dari password akun yang sedang masuk atau password lama pengguna.",
+      "mismatch": "Konfirmasi password baru tidak cocok.",
+      "reauth": "Masuk kembali ke akun Anda sebelum mengubah password. Akun dengan MFA memerlukan sesi verifikasi yang sesuai.",
+      "missing": "Profil pengguna tidak ditemukan. Muat ulang daftar Users.",
+      "forbidden": "Hanya administrator dapat mereset password pengguna lain.",
+      "rateLimit": "Terlalu banyak percobaan. Tunggu sebelum mencoba kembali.",
+      "session": "Sesi berakhir. Silakan masuk kembali.",
+      "failed": "Perubahan password belum dapat dikonfirmasi. Periksa koneksi dan pastikan Edge Function terbaru sudah di-deploy."
+    }
+  },
+  "luxe": {
+    "navigation": "Navigasi utama",
+    "openMenu": "Buka menu",
+    "closeMenu": "Tutup menu",
+    "nav": {
+      "services": "Layanan",
+      "crew": "The Crew",
+      "stories": "Cerita",
+      "contact": "Hubungi kami"
+    },
+    "eyebrow": "Wedding planner & organizer",
+    "explore": "Jelajahi layanan",
+    "watchFilm": "Lihat film",
+    "heroFoot": "Perencanaan � Perayaan � Kenangan",
+    "brandSignature": "Livina Wedding",
+    "servicesEyebrow": "01 / Layanan kami",
+    "filmEyebrow": "Di balik setiap momen",
+    "filmTitle": "Cinta dalam setiap detail.",
+    "crewEyebrow": "02 / Orang-orang di balik Livina",
+    "crewLine1": "The",
+    "crewLine2": "Crew",
+    "storiesEyebrow": "03 / Cerita & kenangan",
+    "viewStory": "Lihat cerita",
+    "contactEyebrow": "04 / Mari terhubung"
+  },
+  "admin": {
+    "brand": "Livina Wedding",
+    "dashboard": "Dashboard",
+    "menu": "Buka menu",
+    "website": "Lihat website",
+    "logout": "Keluar",
+    "logoutError": "Belum dapat keluar. Periksa koneksi dan coba kembali.",
+    "welcome": "Selamat datang, {name}",
+    "description": "Kelola konten Livina Wedding melalui panel ini.",
+    "crew": "Kelola The Crew",
+    "crewHint": "Atur foto, nama, posisi, kata-kata, urutan, dan publikasi anggota tim.",
+    "websiteHint": "Buka halaman publik dan periksa tampilan konten yang telah diterbitkan.",
+    "login": "Masuk admin",
+    "privateArea": "Area pengelola",
+    "loginHeadline": "Di balik setiap momen istimewa.",
+    "loginDescription": "Akses khusus administrator dan pengelola Livina Wedding.",
+    "back": "Kembali ke website",
+    "checking": "Memeriksa sesi�",
+    "configuration": "Koneksi Supabase belum diatur. Isi konfigurasi proyek untuk mengaktifkan login.",
+    "activationTitle": "Buat kata sandi akun",
+    "activationHint": "Selesaikan undangan Anda untuk masuk ke panel Livina.",
+    "password": "Kata sandi baru",
+    "confirmPassword": "Ulangi kata sandi",
+    "passwordHint": "Minimal 12 karakter, dengan huruf dan angka.",
+    "activate": "Aktifkan akun",
+    "activating": "Mengaktifkan�",
+    "activationInvalid": "Tautan undangan tidak lengkap atau kedaluwarsa. Minta administrator mengirim ulang undangan.",
+    "activationError": "Akun belum dapat diaktifkan. Periksa tautan undangan dan kata sandi Anda.",
+    "passwordMismatch": "Kata sandi belum memenuhi ketentuan atau konfirmasi tidak sama."
+  },
+  "wedding": {
+    "siteEmpty": "Konten website sedang dipersiapkan.",
+    "brand": "Livina Wedding",
+    "brandLine1": "Livina",
+    "brandLine2": "Wedding",
+    "metaTitle": "Livina Wedding � Cinta dalam Setiap Detail",
+    "metaDescription": "Perencanaan dan pengelolaan pernikahan bersama Livina Wedding. Kenali layanan, tim, dan cerita di balik setiap momen istimewa.",
+    "heroTitle": "LIVINA WEDDING",
+    "heroSubtitle": "Cinta dalam setiap detail",
+    "scroll": "Gulir untuk melihat cerita Livina",
+    "film": "Film pernikahan, referensi visual sementara",
+    "skip": "Langsung ke konten",
+    "servicesLine1": "Our",
+    "servicesLine2": "Services",
+    "crew": "THE CREW",
+    "crewRole": "Orang-orang di balik Livina",
+    "crewEmpty": "Profil anggota tim Livina akan hadir di sini setelah diterbitkan.",
+    "crewPreview": "Pratinjau tim � nama, profil, dan foto di bagian ini adalah data contoh dari JSON untuk peninjauan desain.",
+    "crewPhotoHint": "Lihat foto {name}. Tekan Escape untuk menutup.",
+    "crewPortrait": "Foto profil {name}",
+    "storiesTitle": "What Our Clients Say",
+    "storiesSubtitle": "Cerita istimewa dari pasangan kami",
+    "storiesDemoCredit": "Pratinjau testimoni � nama pasangan, lokasi, foto, dan ulasan di bagian ini adalah data contoh, bukan ulasan pelanggan nyata.",
+    "storiesEmpty": "Cerita pasangan akan hadir setelah diterbitkan.",
+    "readStory": "Baca cerita {name}",
+    "storyPortrait": "Foto pernikahan {name}",
+    "storyDetail": "Cerita {name}",
+    "referenceSubtitle": "Referensi visual � kisah dan foto dari Verve Organizer",
+    "referenceCredit": "Materi visual sementara dari Verve Organizer untuk pratinjau desain. Pasangan, ulasan, dan foto pada gambar ini merupakan milik referensi, bukan testimoni pelanggan Livina Wedding.",
+    "previewImage": "Lihat gambar referensi {number}",
+    "referenceAlt": "Gambar referensi pernikahan Verve Organizer {number}",
+    "previewTitle": "Referensi visual pernikahan",
+    "contact": "Hubungi Livina Wedding",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "instagram": "Instagram",
+    "contactPending": "Kontak segera tersedia",
+    "rights": "Seluruh hak dilindungi.",
+    "admin": "Area pengelola",
+    "backTop": "Kembali ke atas",
+    "services": {
+      "planner": {
+        "title": "Wedding Planner",
+        "description": "Dari ide pertama hingga detail terakhir, kami membantu menyusun perjalanan menuju hari pernikahan yang terasa personal dan terencana.",
+        "highlight": "Nikmati perjalanannya. Kami mendampingi setiap langkah Anda."
+      },
+      "organizer": {
+        "title": "Wedding Organizer",
+        "description": "Koordinasi waktu, alur acara, dan seluruh detail di hari istimewa agar Anda dapat hadir sepenuhnya dalam setiap momen.",
+        "highlight": "Anda merayakan cinta. Kami menjaga jalannya acara."
+      },
+      "sangjit": {
+        "title": "Sangjit Planner",
+        "description": "Perayaan tradisi yang direncanakan dengan perhatian pada makna, keluarga, serta setiap rangkaian prosesi.",
+        "highlight": "Tradisi yang bermakna, detail yang terjaga."
+      },
+      "engagement": {
+        "title": "Engagement",
+        "description": "Sebuah awal yang dirayakan bersama orang terdekat, dengan suasana dan detail yang mencerminkan cerita Anda.",
+        "highlight": "Karena awal cerita layak dirayakan."
+      },
+      "social": {
+        "title": "Social Event",
+        "description": "Pertemuan dan perayaan yang disusun dengan perhatian pada pengalaman tamu, suasana, serta momen kebersamaan.",
+        "highlight": "Momen sederhana, kesan yang tinggal lebih lama."
+      },
+      "corporate": {
+        "title": "Corporate Event",
+        "description": "Perencanaan acara yang menyelaraskan identitas, kebutuhan, dan koordinasi agar setiap rangkaian berjalan dengan baik.",
+        "highlight": "Detail yang selaras untuk pengalaman yang berkesan."
+      }
+    },
+    "storyVideo": "Video pernikahan {name}",
+    "ownerGroup": "The Owner",
+    "crewGroup": "The Crew"
+  },
+  "crew": {
+    "previewHint": "Pratinjau tampilan. Penyimpanan dan unggah foto tersedia setelah Supabase Livina dikonfigurasi.",
+    "previewForm": "Lihat form anggota",
+    "title": "The Crew",
+    "adminTitle": "Kelola The Crew",
+    "description": "Kelola orang-orang di balik Livina Wedding. Tentukan profil, foto, dan urutan tampil di website.",
+    "listTitle": "Anggota tim",
+    "add": "Tambah anggota",
+    "edit": "Edit anggota",
+    "detail": "Detail anggota",
+    "delete": "Hapus",
+    "deleteTitle": "Hapus anggota?",
+    "deleteDescription": "Profil {name} akan dihapus dari daftar tim dan website. Foto tetap tersimpan di pustaka media.",
+    "deleteConfirm": "Ya, hapus anggota",
+    "save": "Simpan anggota",
+    "saving": "Menyimpan�",
+    "cancel": "Batal",
+    "close": "Tutup",
+    "saved": "Data anggota berhasil disimpan.",
+    "deleted": "Anggota berhasil dihapus.",
+    "name": "Nama",
+    "role": "Posisi / jabatan",
+    "biography": "Kata-kata / tentang anggota",
+    "biographyHint": "Tulis deskripsi singkat atau kutipan anggota. Maksimal 2.000 karakter.",
+    "nameHint": "Nama yang ditampilkan di website",
+    "roleHint": "Posisi anggota di tim Livina",
+    "photo": "Foto anggota",
+    "noPhoto": "Belum ada foto",
+    "photoOptional": "Foto opsional. Jika belum ada, website menampilkan inisial nama.",
+    "choosePhoto": "Pilih dari pustaka media",
+    "removePhoto": "Lepas foto",
+    "photoLibrary": "Pustaka foto",
+    "photoHint": "Pilih foto siap pakai atau unggah foto baru. Sumber JPG, PNG, atau WebP maksimal 5 MB akan diproses menjadi WebP.",
+    "alt": "Deskripsi foto",
+    "altHint": "Jelaskan foto untuk pembaca layar. Maksimal 300 karakter.",
+    "file": "Berkas foto",
+    "upload": "Unggah foto",
+    "uploading": "Mengunggah�",
+    "uploadQueued": "Foto masuk antrean. Tunggu pemrosesan selesai, lalu pilih fotonya.",
+    "selectPhoto": "Pilih foto {name}",
+    "pending": "Menunggu diproses",
+    "processing": "Sedang diproses",
+    "ready": "Siap dipakai",
+    "failed": "Pemrosesan gagal",
+    "photoNoAlt": "Deskripsi foto belum tersedia",
+    "refresh": "Muat ulang",
+    "order": "Urutan tampil",
+    "orderHint": "Angka lebih kecil ditampilkan lebih dahulu. Mulai dari 0.",
+    "status": "Status",
+    "draft": "Draft",
+    "published": "Terbit",
+    "publicationHint": "Hanya anggota berstatus terbit yang muncul di website. Mengedit atau menghapus anggota terbit memerlukan izin publikasi.",
+    "search": "Cari",
+    "searchHint": "Cari nama atau posisi",
+    "filter": "Filter status",
+    "allStatuses": "Semua status",
+    "sort": "Urutkan",
+    "direction": "Arah urutan",
+    "ascending": "Menaik",
+    "descending": "Menurun",
+    "created": "Tanggal dibuat",
+    "perPage": "Data per halaman",
+    "previous": "Sebelumnya",
+    "next": "Selanjutnya",
+    "total": "Total data: {total}",
+    "page": "Halaman {page} dari {pages}",
+    "empty": "Tidak ada data",
+    "emptyHint": "Tambahkan anggota pertama atau sesuaikan pencarian dan filter.",
+    "loading": "Memuat data�",
+    "actions": "Tindakan",
+    "publicLink": "Lihat halaman The Crew",
+    "brand": "Livina Wedding",
+    "publicEyebrow": "Orang-orang di balik Livina",
+    "publicDescription": "Kenali tim yang akan mendampingi momen istimewa Anda.",
+    "publicEmpty": "Profil tim akan segera hadir di sini.",
+    "publicError": "Profil tim belum dapat ditampilkan. Silakan coba kembali.",
+    "retry": "Coba lagi",
+    "signInTitle": "Masuk ke pengelolaan Livina",
+    "signInHint": "Gunakan akun administrator atau pengelola konten Livina Wedding.",
+    "showPassword": "Tampilkan kata sandi",
+    "hidePassword": "Sembunyikan kata sandi",
+    "email": "Email",
+    "password": "Kata sandi",
+    "signIn": "Masuk",
+    "signingIn": "Memeriksa akun�",
+    "signOut": "Keluar",
+    "signedInAs": "Masuk sebagai {name}",
+    "security": "Verifikasi keamanan login",
+    "captchaError": "Verifikasi keamanan belum dapat dimuat. Muat ulang halaman.",
+    "setupTitle": "Koneksi Supabase Livina belum diatur",
+    "setupHint": "Isi konfigurasi sesuai supabase/README.md untuk mengaktifkan penyimpanan data, login, dan unggah foto.",
+    "noAccess": "Akun ini tidak memiliki izin membaca data tim. Hubungi administrator Livina.",
+    "validation": {
+      "required": "Kolom ini wajib diisi.",
+      "tooLong": "Teks melebihi batas karakter.",
+      "invalidOrder": "Urutan harus berupa bilangan bulat 0 sampai 2.147.483.647.",
+      "invalidStatus": "Pilih status draft atau terbit.",
+      "invalidPhoto": "Pilih foto yang valid dari pustaka media.",
+      "invalidFounder": "Penanda founder tidak valid."
+    },
+    "errors": {
+      "configuration": "Konfigurasi Supabase Livina belum tersedia.",
+      "session": "Login gagal atau sesi berakhir. Periksa akun dan masuk kembali.",
+      "authRejected": "Supabase menolak autentikasi akun. Detail penyebab tersedia pada log organizer_login_rejected di server.",
+      "captchaRejected": "CAPTCHA masih aktif di Supabase Auth. Matikan Enable Captcha protection pada Authentication → Attack Protection, lalu simpan.",
+      "accountAccess": "Autentikasi berhasil, tetapi profil aplikasi atau role aktif belum tersedia untuk akun ini.",
+      "sessionSetup": "Autentikasi berhasil, tetapi sesi admin belum dapat diverifikasi. Periksa konfigurasi sesi aplikasi.",
+      "forbidden": "Anda tidak memiliki izin untuk tindakan ini.",
+      "rateLimit": "Terlalu banyak percobaan. Tunggu sebelum mencoba kembali.",
+      "unavailable": "Layanan belum siap. Hubungi administrator untuk memeriksa konfigurasi.",
+      "request": "Data gagal diproses. Periksa isian, izin, dan relasi data, lalu coba kembali.",
+      "network": "Tidak dapat terhubung. Periksa koneksi internet dan coba kembali.",
+      "validation": "Periksa kembali isian anggota.",
+      "stale": "Data sudah berubah atau tidak lagi tersedia. Muat ulang daftar.",
+      "file": "Pilih foto JPG, PNG, atau WebP berukuran maksimal 5 MB.",
+      "alt": "Isi deskripsi foto, maksimal 300 karakter.",
+      "upload": "Unggahan gagal. Pilih ulang berkas dan coba lagi.",
+      "photoInvalid": "Foto hasil crop belum dapat dibaca. Pilih dan crop ulang foto, lalu simpan kembali.",
+      "videoFormat": "Gunakan video MP4 dengan codec H.264 dan audio AAC (atau tanpa audio). WebM, HEVC dan MP4 terfragmentasi perlu diekspor ulang terlebih dahulu.",
+      "videoLimit": "Video maksimal 20 MB, 60 detik dan Full HD (1920 × 1080 atau 1080 × 1920).",
+      "videoPoster": "Poster video belum siap. Pilih ulang video agar poster dibuat otomatis."
+    },
+    "isFounder": "Founder",
+    "founderHint": "Hanya satu profil dapat ditandai sebagai founder. Founder tampil lebih dahulu pada kedua style."
+  },
+  "common": {
+    "home": "Home",
+    "edit": "Edit",
+    "close": "Close",
+    "saveChanges": "Save Changes",
+    "viewMore": "View More",
+    "delete": "Delete",
+    "filter": "Filter",
+    "seeAll": "See all"
+  },
+  "sidebar": {
+    "groups": {
+      "menu": "Menu",
+      "support": "Support",
+      "others": "Others"
+    },
+    "badges": {
+      "new": "new",
+      "pro": "pro"
+    },
+    "items": {
+      "crew": "The Crew",
+      "dashboard": "Dashboard",
+      "ecommerceHome": "Ecommerce",
+      "analytics": "Analytics",
+      "marketing": "Marketing",
+      "crm": "CRM",
+      "stocks": "Stocks",
+      "saas": "SaaS",
+      "logistics": "Logistics",
+      "ai": "AI",
+      "sales": "Sales",
+      "finance": "Finance",
+      "aiAssistant": "AI Assistant",
+      "textGenerator": "Text Generator",
+      "imageGenerator": "Image Generator",
+      "codeGenerator": "Code Generator",
+      "videoGenerator": "Video Generator",
+      "aiSettings": "AI Settings",
+      "ecommerce": "E-commerce",
+      "products": "Products",
+      "addProduct": "Add Product",
+      "billing": "Billing",
+      "invoices": "Invoices",
+      "singleInvoice": "Single Invoice",
+      "createInvoice": "Create Invoice",
+      "transactions": "Transactions",
+      "singleTransaction": "Single Transaction",
+      "calendar": "Calendar",
+      "userProfile": "User Profile",
+      "task": "Task",
+      "taskList": "List",
+      "kanban": "Kanban",
+      "forms": "Forms",
+      "formElements": "Form Elements",
+      "formLayout": "Form Layout",
+      "tables": "Tables",
+      "basicTables": "Basic Tables",
+      "dataTables": "Data Tables",
+      "pages": "Pages",
+      "fileManager": "File Manager",
+      "pricingTables": "Pricing Tables",
+      "faq": "FAQ",
+      "apiKeys": "API Keys",
+      "integrations": "Integrations",
+      "blankPage": "Blank Page",
+      "error404": "404 Error",
+      "error500": "500 Error",
+      "error503": "503 Error",
+      "comingSoon": "Coming Soon",
+      "maintenance": "Maintenance",
+      "successPage": "Success",
+      "layouts": "Layouts",
+      "layoutOne": "Layout One",
+      "layoutTwo": "Layout Two",
+      "layoutThree": "Layout Three",
+      "layoutFour": "Layout Four",
+      "layoutFive": "Layout Five",
+      "layoutSix": "Layout Six",
+      "charts": "Charts",
+      "lineChart": "Line Chart",
+      "barChart": "Bar Chart",
+      "pieChart": "Pie Chart",
+      "radarChart": "Radar Chart",
+      "radialChart": "Radial Chart",
+      "maps": "Maps",
+      "mapsGoogle": "Maps",
+      "vectorMap": "Vector Map",
+      "uiElements": "UI Elements",
+      "alerts": "Alerts",
+      "avatar": "Avatar",
+      "badge": "Badge",
+      "breadcrumb": "Breadcrumb",
+      "buttons": "Buttons",
+      "buttonsGroup": "Buttons Group",
+      "cards": "Cards",
+      "carousel": "Carousel",
+      "dropdowns": "Dropdowns",
+      "images": "Images",
+      "links": "Links",
+      "listView": "List",
+      "modals": "Modals",
+      "notificationUi": "Notification",
+      "pagination": "Pagination",
+      "popovers": "Popovers",
+      "progressbar": "Progressbar",
+      "ribbons": "Ribbons",
+      "spinners": "Spinners",
+      "tabs": "Tabs",
+      "tooltips": "Tooltips",
+      "videos": "Videos",
+      "authentication": "Authentication",
+      "signIn": "Sign In",
+      "signUp": "Sign Up",
+      "resetPassword": "Reset Password",
+      "twoStepVerification": "Two Step Verification",
+      "chat": "Chat",
+      "supportMenu": "Support",
+      "supportList": "Support List",
+      "supportReply": "Support Reply",
+      "email": "Email",
+      "inbox": "Inbox",
+      "inboxDetails": "Details"
+    },
+    "widget": {
+      "title": "#1 Tailwind CSS Dashboard",
+      "description": "Leading Tailwind CSS Admin Template with 500+ UI Component and Pages.",
+      "purchasePlan": "Purchase Plan"
+    }
+  },
+  "header": {
+    "searchPlaceholder": "Search or type command...",
+    "toggleSidebar": "Toggle Sidebar",
+    "notifications": {
+      "title": "Notification",
+      "requestsPermission": "requests permission to change",
+      "project": "Project",
+      "minAgo": "{count} min ago",
+      "hrAgo": "{count} hr ago",
+      "viewAll": "View All Notifications"
+    }
+  },
+  "userDropdown": {
+    "editProfile": "Edit profile",
+    "accountSettings": "Account settings",
+    "support": "Support",
+    "language": "Language",
+    "signOut": "Sign out"
+  },
+  "ecommerce": {
+    "title": "E-commerce Dashboard",
+    "metrics": {
+      "customers": "Customers",
+      "orders": "Orders"
+    },
+    "months": {
+      "jan": "Jan",
+      "feb": "Feb",
+      "mar": "Mar",
+      "apr": "Apr",
+      "may": "May",
+      "jun": "Jun",
+      "jul": "Jul",
+      "aug": "Aug",
+      "sep": "Sep",
+      "oct": "Oct",
+      "nov": "Nov",
+      "dec": "Dec"
+    },
+    "monthlySales": {
+      "title": "Monthly Sales",
+      "series": "Sales"
+    },
+    "monthlyTarget": {
+      "title": "Monthly Target",
+      "subtitle": "Target you�ve set for each month",
+      "earned": "You earn {amount} today, it's higher than last month. Keep up your good work!",
+      "target": "Target",
+      "revenue": "Revenue",
+      "today": "Today"
+    },
+    "statistics": {
+      "title": "Statistics",
+      "subtitle": "Target you've set for each month",
+      "sales": "Sales",
+      "revenue": "Revenue",
+      "monthly": "Monthly",
+      "quarterly": "Quarterly",
+      "annually": "Annually",
+      "selectDateRange": "Select date range"
+    },
+    "recentOrders": {
+      "title": "Recent Orders",
+      "products": "Products",
+      "category": "Category",
+      "price": "Price",
+      "status": "Status",
+      "variants": "{count, plural, one {# Variant} other {# Variants}}",
+      "categories": {
+        "laptop": "Laptop",
+        "watch": "Watch",
+        "smartphone": "SmartPhone",
+        "electronics": "Electronics",
+        "accessories": "Accessories"
+      },
+      "statuses": {
+        "delivered": "Delivered",
+        "pending": "Pending",
+        "canceled": "Canceled"
+      }
+    },
+    "demographic": {
+      "title": "Customers Demographic",
+      "subtitle": "Number of customer based on country",
+      "customers": "{count} Customers",
+      "usa": "USA",
+      "france": "France"
+    }
+  },
+  "analytics": {
+    "metrics": {
+      "uniqueVisitors": "Unique Visitors",
+      "totalPageviews": "Total Pageviews",
+      "bounceRate": "Bounce Rate",
+      "visitDuration": "Visit Duration",
+      "vsLastMonth": "Vs last month"
+    },
+    "barChart": {
+      "title": "Analytics",
+      "subtitle": "Visitor analytics of last 30 days"
+    },
+    "topChannels": {
+      "title": "Top Channels",
+      "source": "Source",
+      "visitors": "Visitors",
+      "channelsReport": "Channels Report"
+    },
+    "topPages": {
+      "title": "Top Pages",
+      "source": "Source",
+      "pageview": "Pageview",
+      "channelsReport": "Channels Report"
+    },
+    "activeUsers": {
+      "title": "Active Users",
+      "liveVisitors": "Live visitors",
+      "avgDaily": "Avg, Daily",
+      "avgWeekly": "Avg, Weekly",
+      "avgMonthly": "Avg, Monthly"
+    },
+    "acquisitionChannels": {
+      "title": "Acquisition Channels"
+    },
+    "session": {
+      "title": "Sessions By Device"
+    },
+    "recentOrders": {
+      "title": "Recent Orders",
+      "products": "Products",
+      "category": "Category",
+      "country": "Country",
+      "cr": "CR",
+      "value": "Value",
+      "categories": {
+        "uiKits": "UI Kits",
+        "templates": "Templates",
+        "saas": "SaaS"
+      },
+      "crDashboard": "Dashboard"
+    }
+  },
+  "notFound": {
+    "error": "ERROR",
+    "message": "We can�t seem to find the page you are looking for!",
+    "backHome": "Back to Home Page"
+  },
+  "marketing": {
+    "metrics": {
+      "avgClientRating": "Avg. Client Rating",
+      "instagramFollowers": "Instagram Followers",
+      "totalRevenue": "Total Revenue",
+      "vsLastMonth": "Vs last month"
+    },
+    "impressionChart": {
+      "title": "Impression & Data Traffic",
+      "totalRevenue": "Total Revenue",
+      "sales": "Sales",
+      "revenue": "Revenue"
+    },
+    "featuredCampaign": {
+      "title": "Featured Campaigns",
+      "viewMore": "View More",
+      "delete": "Delete",
+      "products": "Products",
+      "campaign": "Campaign",
+      "status": "Status",
+      "adsCampaign": "Ads campaign",
+      "campaigns": {
+        "growBrand": "Grow your brand by...",
+        "betterIdeas": "Make Better Ideas...",
+        "increaseTraffic": "Increase your website tra..."
+      },
+      "statuses": {
+        "success": "Success",
+        "pending": "Pending",
+        "failed": "Failed"
+      }
+    },
+    "trafficStats": {
+      "title": "Traffic Stats",
+      "viewMore": "View More",
+      "delete": "Delete",
+      "newSubscribers": "New Subscribers",
+      "conversionRate": "Conversion Rate",
+      "pageBounceRate": "Page Bounce Rate",
+      "thenLastWeek": "then last Week",
+      "newSales": "New Sales"
+    },
+    "trafficSource": {
+      "title": "Top Traffic Source",
+      "viewMore": "View More",
+      "delete": "Delete",
+      "viewAll": "View All"
+    }
+  },
+  "crm": {
+    "metrics": {
+      "activeDeal": "Active Deal",
+      "revenueTotal": "Revenue Total",
+      "closedDeals": "Closed Deals",
+      "lastMonth": "last month"
+    },
+    "statistics": {
+      "title": "Statistics",
+      "subtitle": "Target you�ve set for each month",
+      "avgYearlyProfit": "Avg. Yearly Profit",
+      "sales": "Sales",
+      "revenue": "Revenue"
+    },
+    "estimatedRevenue": {
+      "title": "Estimated Revenue",
+      "subtitle": "Target you�ve set for each month",
+      "goals": "June Goals",
+      "marketing": "Marketing",
+      "sales": "Sales"
+    },
+    "salesCategory": {
+      "title": "Sales Category",
+      "affiliate": "Affiliate",
+      "direct": "Direct",
+      "adsense": "Adsense",
+      "affiliateProgram": "Affiliate Program",
+      "directBuy": "Direct Buy",
+      "products": "Products",
+      "total": "Total",
+      "usedOf": "Used of"
+    },
+    "upcomingSchedule": {
+      "title": "Upcoming Schedule",
+      "schedules": {
+        "item1": {
+          "title": "Business Analytics Press",
+          "description": "Exploring the Future of Data-Driven +6 more"
+        },
+        "item2": {
+          "title": "Business Sprint",
+          "description": "Techniques from Business Sprint +2 more"
+        },
+        "item3": {
+          "title": "Customer Review Meeting",
+          "description": "Insights from the Customer Review Meeting +8 more"
+        }
+      }
+    },
+    "recentOrders": {
+      "title": "Recent Orders",
+      "dealId": "Deal ID",
+      "customer": "Customer",
+      "productService": "Product/Service",
+      "dealValue": "Deal Value",
+      "closeDate": "Close Date",
+      "status": "Status",
+      "action": "Action",
+      "products": {
+        "softwareLicense": "Software License",
+        "cloudHosting": "Cloud Hosting",
+        "webDomain": "Web Domain",
+        "sslCertificate": "SSL Certificate",
+        "premiumSupport": "Premium Support"
+      },
+      "statuses": {
+        "complete": "Complete",
+        "pending": "Pending",
+        "cancel": "Cancel"
+      }
+    }
+  },
+  "stocks": {
+    "title": "Stocks",
+    "dividend": {
+      "title": "Dividend",
+      "series": "Dividend",
+      "viewMore": "View More",
+      "delete": "Delete"
+    },
+    "portfolioPerformance": {
+      "title": "Portfolio Performance",
+      "subtitle": "Here is your performance stats of each month",
+      "series": "Portfolio Performance"
+    },
+    "trendingStocks": {
+      "title": "Trending Stocks",
+      "shortStock": "Short Stock",
+      "buyStock": "Buy Stock"
+    },
+    "watchlist": {
+      "title": "My Watchlist",
+      "viewMore": "View More",
+      "delete": "Delete"
+    },
+    "latestTransactions": {
+      "title": "Latest Transactions",
+      "searchPlaceholder": "Search...",
+      "table": {
+        "name": "Name",
+        "date": "Date",
+        "price": "Price",
+        "category": "Category",
+        "status": "Status"
+      },
+      "actions": {
+        "bought": "Bought {symbol}",
+        "sell": "Sell {symbol}"
+      },
+      "categories": {
+        "finance": "Finance"
+      },
+      "statuses": {
+        "success": "Success",
+        "pending": "Pending",
+        "failed": "Failed"
+      }
+    }
+  },
+  "saas": {
+    "title": "SaaS",
+    "metrics": {
+      "overview": "Overview",
+      "totalRevenue": "Total Revenue",
+      "activeUsers": "Active Users",
+      "clv": "Customer Lifetime Value",
+      "cac": "Customer Acquisition Cost"
+    },
+    "churnRate": {
+      "title": "Churn Rate",
+      "subtitle": "Downgrade to Free plan",
+      "thanLastWeek": "than last Week",
+      "series": "Churn Rate",
+      "viewMore": "View More",
+      "delete": "Delete"
+    },
+    "userGrowth": {
+      "title": "User Growth",
+      "subtitle": "New signups website + mobile",
+      "thanLastWeek": "than last Week",
+      "series": "Revenue",
+      "viewMore": "View More",
+      "delete": "Delete"
+    },
+    "conversionFunnel": {
+      "title": "Conversion Funnel",
+      "viewMore": "View More",
+      "delete": "Delete",
+      "series": {
+        "adImpressions": "Ad Impressions",
+        "websiteSession": "Website Session",
+        "appDownload": "App Download",
+        "newUsers": "New Users"
+      }
+    },
+    "recentInvoices": {
+      "title": "Recent Invoices",
+      "table": {
+        "serialNo": "Serial No:",
+        "closeDate": "Close Date",
+        "user": "User",
+        "amount": "Amount",
+        "status": "Status"
+      },
+      "statuses": {
+        "complete": "Complete",
+        "pending": "Pending",
+        "cancelled": "Cancelled"
+      }
+    },
+    "productPerformance": {
+      "title": "Product Performance",
+      "viewMore": "View More",
+      "delete": "Delete",
+      "tabs": {
+        "dailySales": "Daily Sales",
+        "onlineSales": "Online Sales",
+        "newUsers": "New Users"
+      },
+      "digitalProduct": "Digital Product",
+      "physicalProduct": "Physical Product",
+      "avgDailySales": "Average Daily Sales",
+      "totalOnlineSales": "Total Online Sales",
+      "addedLastMonth": "Added last month",
+      "totalNewUsers": "Total New Users",
+      "series": {
+        "sales": "Sales",
+        "revenue": "Revenue"
+      }
+    },
+    "activities": {
+      "title": "Activities",
+      "viewMore": "View More",
+      "delete": "Delete",
+      "newInvoice": "New invoice",
+      "createdInvoice": "created invoice"
+    }
+  },
+  "logistics": {
+    "title": "Logistics",
+    "metrics": {
+      "totalOrders": "Total Orders",
+      "ordersInTransit": "Orders in Transit"
+    },
+    "deliveryStatistics": {
+      "title": "Delivery Statistics",
+      "subtitle": "Total number of deliveries 70.5K",
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "shipment": "Shipment",
+      "delivery": "Delivery"
+    },
+    "revenueEarned": {
+      "totalRevenue": "Total revenue earned",
+      "shippedQuantities": "Shipped quantities",
+      "newSales": "New Sales"
+    },
+    "deliveryVehicle": {
+      "title": "Delivery Vehicles",
+      "subtitle": "Vehicles operating on the road",
+      "thanLastWeek": "than last Week",
+      "onRoute": "On-route"
+    },
+    "trackingDelivery": {
+      "title": "Tracking Delivery",
+      "subtitle": "Last viewed delivery history"
+    },
+    "trackingProgress": {
+      "trackingId": "Tracking ID",
+      "inTransit": "In Transit",
+      "pickedUp": "Picked up",
+      "delivered": "Delivered"
+    },
+    "deliveryMan": {
+      "courier": "Courier"
+    },
+    "deliveriesActivity": {
+      "title": "Delivery Activities",
+      "subtitle": "Track your recent shipping activities",
+      "tabs": {
+        "all": "All",
+        "delivered": "Delivered",
+        "inTransit": "In-Transit",
+        "pending": "Pending",
+        "processing": "Processing"
+      },
+      "filter": {
+        "button": "Filter",
+        "category": "Category",
+        "searchCategory": "Search category...",
+        "company": "Company",
+        "searchCompany": "Search company...",
+        "apply": "Apply"
+      },
+      "table": {
+        "orderId": "Order ID",
+        "category": "Category",
+        "company": "Company",
+        "arrivalTime": "Arrival Time",
+        "route": "Route",
+        "price": "Price",
+        "status": "Status"
+      },
+      "categories": {
+        "furniture": "Furniture",
+        "clothing": "Clothing",
+        "books": "Books",
+        "automotive": "Automotive",
+        "electronics": "Electronics",
+        "health": "Health",
+        "toys": "Toys",
+        "kitchen": "Kitchen",
+        "beauty": "Beauty",
+        "sports": "Sports"
+      },
+      "statuses": {
+        "delivered": "Delivered",
+        "inTransit": "In Transit",
+        "canceled": "Canceled"
+      },
+      "pagination": {
+        "showing": "Showing",
+        "to": "to",
+        "of": "of",
+        "page": "Page"
+      }
+    }
+  },
+  "aiDashboard": {
+    "stats": {
+      "users": "Users",
+      "projects": "Projects",
+      "revenue": "Revenue",
+      "paidUsers": "Paid Users",
+      "last30Days": "Last 30 Days"
+    },
+    "userRevenue": {
+      "title": "Users & Revenue Statistics",
+      "subtitle": "Visualize month-to-month progress and engagement.",
+      "users": "Users",
+      "revenue": "Revenue",
+      "monthly": "Monthly",
+      "quarterly": "Quarterly",
+      "annually": "Annually"
+    },
+    "apiToken": {
+      "title": "API Token Usages",
+      "totalApiTokenUsed": "Total API Token Used",
+      "tokenUsed": "Token used",
+      "configuredKey": "{count, plural, one {# API key configured} other {# API keys configured}}",
+      "viewAllUsageDetails": "View All Usage Details"
+    },
+    "userAnalytics": {
+      "title": "User Analytics",
+      "subtitle": "Platform user insights",
+      "totalUsers": "Total Users",
+      "freeUsers": "Free Users",
+      "paidUsers": "Paid Users",
+      "ofTotalUser": "of total user",
+      "thisMonth": "This Month",
+      "fromLastMonth": "from last month",
+      "thisYear": "This Year",
+      "fromLastYear": "from last year"
+    },
+    "projectAnalytics": {
+      "title": "Projects Analytics",
+      "subtitle": "View detailed project insights",
+      "totalProjects": "Total Projects",
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "projectCreated": "Project created",
+      "thisMonth": "This Month",
+      "fromLastMonth": "from last month",
+      "thisYear": "This Year",
+      "fromLastYear": "from last year"
+    },
+    "recentTransactions": {
+      "title": "Recent Transactions",
+      "searchPlaceholder": "Search...",
+      "filter": "Filter",
+      "table": {
+        "paidBy": "Paid By",
+        "packageName": "Package Name",
+        "price": "Price",
+        "paidDate": "Paid Date",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "packages": {
+        "starterMonthly": "Starter - Monthly",
+        "growthYearly": "Growth - Yearly",
+        "premiumMonthly": "Premium - Monthly"
+      },
+      "statuses": {
+        "active": "Active",
+        "expired": "Expired"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "pageOf": "Page {current} of {total}"
+      }
+    }
+  },
+  "sales": {
+    "salesStats": {
+      "title": "Sales Dashboard",
+      "subtitle": "Track revenue, performance, and sales growth in real-time",
+      "selectDateRange": "Select date range",
+      "export": "Export",
+      "totalRevenue": "Total Revenue",
+      "totalSales": "Total Sales",
+      "conversionRate": "Conversion Rate",
+      "refundRate": "Refund Rate",
+      "vsLastMonth": "vs last month",
+      "newSales": "New Sales"
+    },
+    "userRevenueStats": {
+      "title": "Users & Revenue Statistics",
+      "subtitle": "Visualize month-to-month progress and engagement.",
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "onlineSales": "Online Sales",
+      "offlineSales": "Offline Sales"
+    },
+    "userRetention": {
+      "title": "User Retention",
+      "subtitle": "User engagement over time",
+      "increasedVsLastWeek": "Increased vs last week"
+    },
+    "salesByChannel": {
+      "title": "Sales by Channel",
+      "subtitle": "Channel performance overview",
+      "increasedVsLastWeek": "Increased vs last week",
+      "channels": {
+        "website": "Website",
+        "email": "Email",
+        "socialMedia": "Social Media"
+      },
+      "table": {
+        "channels": "Channels",
+        "metric": "Metric",
+        "total": "Total"
+      }
+    },
+    "salesByCountry": {
+      "title": "Sales by Country",
+      "subtitle": "Country-wise sales overview",
+      "countries": {
+        "usa": "USA",
+        "france": "France",
+        "japan": "Japan",
+        "germany": "Germany"
+      }
+    },
+    "topProducts": {
+      "title": "Top Products",
+      "table": {
+        "productName": "Product Name",
+        "category": "Category",
+        "sales": "Sales",
+        "earnings": "Earnings",
+        "stocks": "Stocks",
+        "status": "Status"
+      },
+      "products": {
+        "classicDenimJacket": "Classic Denim Jacket",
+        "slimFitChinos": "Slim Fit Chinos",
+        "organicCottonTShirt": "Organic Cotton T-Shirt",
+        "leatherAnkleBoots": "Leather Ankle Boots"
+      },
+      "variants": {
+        "threeSizes": "3 Sizes",
+        "fourColors": "4 Colors",
+        "fiveColors": "5 Colors",
+        "sixSizes": "6 Sizes"
+      },
+      "categories": {
+        "jacket": "Jacket",
+        "pants": "Pants",
+        "tShirt": "T-Shirt",
+        "footwear": "Footwear"
+      },
+      "statuses": {
+        "inStock": "In Stock",
+        "lowStock": "Low Stock",
+        "outOfStock": "Out of Stock"
+      }
+    }
+  },
+  "finance": {
+    "totalBalanceOverview": {
+      "title": "Total Balance",
+      "overview": "Overview of your current funds",
+      "thanLastMonth": "than last month",
+      "primaryAccount": "Primary Account:",
+      "seeDetails": "See Details",
+      "transfer": "Transfer",
+      "received": "Received",
+      "balance": "Balance"
+    },
+    "stats": {
+      "totalBalance": "Total Balance",
+      "monthlyIncome": "Monthly Income",
+      "totalSpent": "Total Spent",
+      "savingRate": "Saving Rate",
+      "thanLastMonth": "than last month",
+      "goalProgress": "Goal: 30% - 3.9% to go"
+    },
+    "cashflow": {
+      "title": "Cashflow Overview",
+      "totalRevenue": "Total Revenue",
+      "income": "Income",
+      "expense": "Expense"
+    },
+    "spending": {
+      "title": "Spending",
+      "yearly": "Yearly",
+      "monthly": "Monthly",
+      "total": "Total",
+      "categories": {
+        "activity": "Activity",
+        "onlinePurchases": "Online Purchases",
+        "groceries": "Groceries",
+        "digitalGoods": "Digital Goods",
+        "stationery": "Stationery",
+        "others": "Others"
+      }
+    },
+    "quickSend": {
+      "title": "Quick send",
+      "sendFrom": "Send From",
+      "currency": "Currency",
+      "amount": "Amount",
+      "sendMoney": "Send Money"
+    },
+    "myCards": {
+      "title": "My Cards",
+      "addCard": "Add Card",
+      "virtualCard": "Virtual Card",
+      "recentTransactions": "Recent Transactions",
+      "seeAllTransactions": "See All Transactions",
+      "transactions": {
+        "paymentReceived": "Payment Received",
+        "cashbackDesc": "Cashback from Stellar Rewards",
+        "netflixSubscription": "Netflix Subscription",
+        "netflixDesc": "September subscription charge",
+        "moneyReceived": "Money received",
+        "paypalDesc": "Payment received via PayPal",
+        "googleAds": "Google Ads",
+        "googleAdsDesc": "Payment received form google ads"
+      }
+    },
+    "transactionsTable": {
+      "title": "Recent Transactions",
+      "searchPlaceholder": "Search...",
+      "filter": "Filter",
+      "table": {
+        "orderId": "Order ID",
+        "activity": "Activity",
+        "price": "Price",
+        "date": "Date",
+        "status": "Status"
+      },
+      "activities": {
+        "hotelBooking": "Hotel Booking",
+        "onlineShopping": "Online Shopping",
+        "gamePurchase": "Game Purchase",
+        "utilityBillPayment": "Utility Bill Payment",
+        "onlineCourseEnrollment": "Online Course Enrollment"
+      },
+      "statuses": {
+        "completed": "Completed",
+        "inProgress": "In Progress"
+      }
+    }
+  },
+  "management": {
+    "brand": "Livina Wedding",
+    "brandShort": "LW",
+    "navigation": "Navigasi pengelola",
+    "dashboard": "Dashboard",
+    "content": "Konten website",
+    "access": "Pengguna & akses",
+    "modules": {
+      "users": "Pengguna",
+      "roles": "Role",
+      "permissions": "Permission",
+      "rolePermissions": "Role Permission",
+      "crew": "The Crew",
+      "clients": "Client & Testimoni",
+      "services": "Service",
+      "templates": "Template",
+      "website": "Pengaturan Website"
+    },
+    "descriptions": {
+      "users": "Kelola akun pengelola. Setiap pengguna mempunyai tepat satu role. Akun baru menerima undangan untuk membuat kata sandi.",
+      "roles": "Kelola nama, kode, dan status role. Hak akses tiap role diatur pada halaman Role Permission.",
+      "permissions": "Kelola katalog hak akses. Kode harus sesuai aksi yang diperiksa backend; menambah kode baru tidak otomatis membuat fitur baru.",
+      "clients": "Kelola nama pasangan, lokasi, foto, ulasan, video opsional, dan izin publikasi untuk kedua style.",
+      "services": "Kelola judul, ringkasan, deskripsi, foto opsional, urutan, dan publikasi layanan untuk kedua style.",
+      "website": "Kelola hero, foto/video utama, slogan, serta kontak website. Satu pengaturan dipakai bersama oleh Style 1 dan Style 2."
+    },
+    "fields": {
+      "name": "Nama",
+      "email": "Email",
+      "phone": "Nomor telepon",
+      "role_id": "Role",
+      "auth_user_id": "UUID akun Auth existing (opsional)",
+      "is_active": "Aktif",
+      "code": "Kode",
+      "description": "Deskripsi",
+      "module": "Modul",
+      "title": "Judul",
+      "slug": "Slug",
+      "summary": "Ringkasan",
+      "highlight": "Kalimat penegas",
+      "image_media_id": "Foto layanan",
+      "sort_order": "Urutan tampil",
+      "status": "Status",
+      "couple_name": "Nama pasangan / client",
+      "venue": "Lokasi / venue",
+      "excerpt": "Kutipan singkat",
+      "full_review": "Ulasan lengkap",
+      "photo_media_id": "Foto client",
+      "video_media_id": "Video (opsional)",
+      "publication_consent": "Sudah mendapatkan izin publikasi dari client",
+      "brand_name": "Nama brand",
+      "hero_title": "Judul utama",
+      "hero_subtitle": "Slogan",
+      "film_title": "Teks Cinta dalam setiap detail",
+      "logo_media_id": "Logo",
+      "hero_poster_id": "Foto utama / poster video",
+      "hero_video_id": "Video utama",
+      "contact_email": "Email kontak",
+      "whatsapp_number": "Nomor WhatsApp",
+      "copyright_start_year": "Tahun mulai hak cipta",
+      "whatsapp_contacts": "Daftar kontak WhatsApp"
+    },
+    "hints": {
+      "email": "Saat edit, email mengikuti akun Supabase Auth dan tidak diubah melalui profil.",
+      "auth_user_id": "Isi bila akun sudah dibuat di Supabase Auth. Kosongkan untuk mengirim undangan akun baru.",
+      "role_id": "Pilih satu role untuk pengguna ini.",
+      "code": "Gunakan kode huruf kecil. Permission memakai pola modul.aksi, misalnya services.read.",
+      "slug": "Huruf kecil, angka, dan tanda hubung. Contoh: wedding-planner.",
+      "publication_consent": "Wajib sebelum diterbitkan. Waktu persetujuan dicatat server ketika pilihan ini disimpan.",
+      "hero_poster_id": "Wajib jika memakai video utama.",
+      "whatsapp_number": "Gunakan nomor internasional, misalnya +6281234567890.",
+      "film_title": "Satu teks bagian film untuk Style 1 dan Style 2. Isi sesuai kata-kata yang ingin ditampilkan."
+    },
+    "add": "Tambah data",
+    "edit": "Edit",
+    "detail": "Detail",
+    "delete": "Hapus",
+    "actions": "Aksi",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "saving": "Menyimpan�",
+    "refresh": "Muat ulang",
+    "saved": "Perubahan berhasil disimpan.",
+    "deleted": "Data berhasil dihapus.",
+    "invited": "Pengguna berhasil ditambahkan. Untuk akun baru, undangan telah dikirim.",
+    "invite": "Tambah pengguna",
+    "addTitle": "Tambah {module}",
+    "editTitle": "Edit {module}",
+    "loading": "Memuat data�",
+    "empty": "Belum ada data yang sesuai.",
+    "search": "Cari data",
+    "perPage": "Jumlah baris",
+    "rows": "{count} baris",
+    "direction": "Arah urutan",
+    "ascending": "Naik",
+    "descending": "Turun",
+    "allStatus": "Semua status",
+    "draft": "Draft",
+    "published": "Terbit",
+    "active": "Aktif",
+    "inactive": "Nonaktif",
+    "yes": "Ya",
+    "no": "Tidak",
+    "previous": "Sebelumnya",
+    "next": "Berikutnya",
+    "pagination": "Halaman {page} dari {pages} � {total} data",
+    "chooseRole": "Pilih role",
+    "deleteHint": "Hapus {name}? Data yang masih dipakai akan ditolak oleh database.",
+    "deleteUserHint": "Hapus profil pengelola {name}? Akses aplikasi dicabut. Akun Supabase Auth tetap ada dan tidak dihapus melalui halaman ini. Administrator aktif terakhir dilindungi.",
+    "resetPassword": "Reset password",
+    "inviteHint": "Pengguna baru menerima email undangan untuk membuat kata sandi. Jika akun Auth sudah ada, hubungkan dengan UUID-nya.",
+    "rolePermissionsHint": "Pilih satu role, lalu tentukan permission yang dimilikinya. Perubahan disimpan sekaligus.",
+    "systemRoleHint": "Administrator sistem selalu memiliki semua permission. Hak akses role ini tidak dapat dikurangi melalui matriks.",
+    "unsaved": "Ada perubahan yang belum disimpan.",
+    "discard": "Batalkan perubahan",
+    "permissionGroups": {
+      "users": "Pengguna",
+      "roles": "Role",
+      "permissions": "Permission",
+      "role_permissions": "Role Permission",
+      "team_members": "The Crew",
+      "testimonials": "Client & Testimoni",
+      "services": "Service",
+      "site_settings": "Pengaturan Website",
+      "social_links": "Media sosial",
+      "media": "Media",
+      "profile": "Profil",
+      "templates": "Template"
+    },
+    "videoHint": "MP4 atau WebM, maksimal 40 MB. Tunggu status Siap sebelum memilih video. Video akan diproses beserta poster-nya.",
+    "uploadVideo": "Unggah video",
+    "noVideo": "Tanpa video",
+    "selectedVideo": "Video yang sudah dipilih",
+    "previewVideo": "Pratinjau video",
+    "noMediaAccess": "Anda tidak memiliki izin membuka pustaka media.",
+    "mediaStatus": {
+      "pending": "Menunggu",
+      "processing": "Diproses",
+      "ready": "Siap",
+      "failed": "Gagal"
+    },
+    "validation": {
+      "required": "Kolom ini wajib diisi.",
+      "invalid": "Nilai atau format tidak valid.",
+      "tooLong": "Teks melebihi batas kolom.",
+      "consent": "Izin publikasi wajib disetujui sebelum terbit.",
+      "contacts": "Periksa setiap kontak: nama wajib diisi, nomor harus memakai +kode negara, dan urutan berupa angka positif atau nol."
+    },
+    "errors": {
+      "network": "Koneksi gagal. Silakan coba kembali.",
+      "session": "Sesi berakhir. Silakan masuk kembali.",
+      "forbidden": "Anda tidak memiliki izin untuk tindakan ini.",
+      "migration": "Struktur modul belum tersedia atau belum dapat dibaca. Terapkan migration admin_console sesuai panduan lalu muat ulang.",
+      "duplicate": "Data sudah ada. Periksa kode unik atau penanda founder.",
+      "inUse": "Data masih dipakai dan tidak dapat dihapus.",
+      "unavailable": "Layanan belum tersedia. Periksa konfigurasi Supabase.",
+      "request": "Permintaan belum berhasil. Periksa data dan izin akun, lalu coba kembali.",
+      "validation": "Periksa kembali kolom yang diisi.",
+      "stale": "Data tidak ditemukan atau aksesnya sudah berubah. Muat ulang daftar.",
+      "tooMany": "Daftar terlalu besar untuk dimuat sekaligus.",
+      "media": "Media belum dapat diproses. Periksa jenis, ukuran, dan izin unggah.",
+      "lastAdmin": "Administrator aktif terakhir tidak dapat dihapus, dinonaktifkan, atau dipindah role.",
+      "systemRole": "Role admin sistem harus tetap aktif.",
+      "file": "Foto tidak valid. Pilih dan crop ulang foto sebelum menyimpan.",
+      "upload": "Media gagal diunggah. Coba simpan kembali.",
+      "alt": "Deskripsi foto tidak valid.",
+      "photoInvalid": "Foto hasil crop belum dapat dibaca. Pilih dan crop ulang foto, lalu simpan kembali.",
+      "videoFormat": "Gunakan video MP4 dengan codec H.264 dan audio AAC (atau tanpa audio). WebM, HEVC dan MP4 terfragmentasi perlu diekspor ulang terlebih dahulu.",
+      "videoLimit": "Video maksimal 20 MB, 60 detik dan Full HD (1920 × 1080 atau 1080 × 1920).",
+      "videoPoster": "Poster video belum siap. Pilih ulang video agar poster dibuat otomatis."
+    },
+    "templateHint": "Pilih satu template untuk halaman utama /. Pilihan hanya Style 1 dan Style 2; template tidak dapat ditambahkan atau dihapus melalui admin.",
+    "previewTemplate": "Buka pratinjau",
+    "activateTemplate": "Aktifkan template",
+    "templateSaved": "Template aktif berhasil disimpan. Pengunjung halaman utama akan diarahkan ke template ini.",
+    "deletePermissionHint": "Hapus {name}? Permission ini juga akan dilepas dari seluruh role yang menggunakannya."
+  },
+  "websiteSettings": {
+    "intro": "Satu pengaturan untuk Style 1 dan Style 2: identitas, video utama, bagian Cinta dalam setiap detail, serta daftar kontak. Terbitkan agar perubahan tampil di website.",
+    "loading": "Memuat pengaturan…",
+    "saved": "Pengaturan website berhasil disimpan.",
+    "contactsHint": "Tambahkan beberapa kontak WhatsApp. Nomor memakai kode negara, misalnya +6281234567890. Hanya kontak aktif yang tampil; urutan terkecil tampil dahulu.",
+    "contactNumber": "Kontak {number}",
+    "label": "Nama / label kontak",
+    "number": "Nomor WhatsApp",
+    "message": "Pesan awal (opsional)",
+    "order": "Urutan",
+    "active": "Aktif",
+    "remove": "Hapus kontak",
+    "noContacts": "Belum ada kontak WhatsApp.",
+    "addContact": "Tambah kontak WhatsApp",
+    "identity": "Identitas dan judul website",
+    "film": "Video utama & Cinta dalam setiap detail",
+    "contact": "Informasi kontak",
+    "publication": "Publikasi"
+  }
+}

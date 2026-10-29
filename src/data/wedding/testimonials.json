@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "source": "preview",
+    "total": 6
+  },
+  "data": [
+    {
+      "id": "preview-testimonial-1",
+      "couple_name": "Andi & Maya",
+      "venue": "Jakarta",
+      "excerpt": "Dari persiapan sampai hari acara, semuanya terasa tenang dan terarah. Kami bisa menikmati setiap momen bersama keluarga.",
+      "full_review": "Tim membantu kami merapikan ide, menyusun jadwal, dan menjaga koordinasi di hari acara. Perhatian pada hal kecil membuat perayaan terasa personal. Ini adalah contoh ulasan untuk pratinjau desain.",
+      "photo_media_id": null,
+      "photo_url": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&h=1000&q=85",
+      "sort_order": 0
+    },
+    {
+      "id": "preview-testimonial-2",
+      "couple_name": "Raka & Putri",
+      "venue": "Bandung",
+      "excerpt": "Detail kecil yang kami bayangkan terwujud dengan indah. Suasananya hangat dan setiap rangkaian berjalan nyaman.",
+      "full_review": "Kami membayangkan sebuah perayaan yang intim. Mulai dari alur acara hingga suasana ruang, seluruh detail tersusun selaras. Ini adalah contoh ulasan untuk pratinjau desain.",
+      "photo_media_id": null,
+      "photo_url": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&h=1000&q=85",
+      "sort_order": 1
+    },
+    {
+      "id": "preview-testimonial-3",
+      "couple_name": "Dion & Clara",
+      "venue": "Surabaya",
+      "excerpt": "Koordinasinya rapi, komunikasinya jelas, dan keluarga kami merasa didampingi sepanjang acara.",
+      "full_review": "Rangkaian persiapan menjadi lebih mudah karena setiap keputusan dibahas dengan jelas. Kami bisa hadir sepenuhnya di hari istimewa tanpa sibuk memikirkan koordinasi. Ini adalah contoh ulasan untuk pratinjau desain.",
+      "photo_media_id": null,
+      "photo_url": "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=800&h=1000&q=85",
+      "sort_order": 2
+    },
+    {
+      "id": "preview-testimonial-4",
+      "couple_name": "Bima & Alya",
+      "venue": "Yogyakarta",
+      "excerpt": "Perayaan sederhana kami terasa sangat istimewa. Setiap bagian punya sentuhan yang sesuai dengan cerita kami.",
+      "full_review": "Kami menyukai pendekatan yang mendengarkan kebutuhan kami sejak awal. Susunan acara dan detail perayaan terasa dekat dengan keluarga. Ini adalah contoh ulasan untuk pratinjau desain.",
+      "photo_media_id": null,
+      "photo_url": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&h=1000&q=85",
+      "sort_order": 3
+    },
+    {
+      "id": "preview-testimonial-5",
+      "couple_name": "Kevin & Nara",
+      "venue": "Bali",
+      "excerpt": "Kami paling mengingat suasana yang hangat dan alur acara yang mengalir. Hari itu terasa begitu menyenangkan.",
+      "full_review": "Dari penyambutan tamu sampai momen terakhir, semua terasa menyatu. Ada ruang bagi kami untuk menikmati waktu bersama orang-orang terdekat. Ini adalah contoh ulasan untuk pratinjau desain.",
+      "photo_media_id": null,
+      "photo_url": "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=800&h=1000&q=85",
+      "sort_order": 4
+    },
+    {
+      "id": "preview-testimonial-6",
+      "couple_name": "Fajar & Livia",
+      "venue": "Semarang",
+      "excerpt": "Terima kasih untuk perhatian dan ketenangannya. Kami merasa didengar, dibantu, dan ditemani di setiap langkah.",
+      "full_review": "Setiap persiapan dibicarakan dengan sabar dan terperinci. Ketika hari acara tiba, kami merasa siap dan bisa fokus merayakan kebersamaan. Ini adalah contoh ulasan untuk pratinjau desain.",
+      "photo_media_id": null,
+      "photo_url": "https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&fit=crop&w=800&h=1000&q=85",
+      "sort_order": 5
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+# Gabungkan bagian ini jika proyek Supabase sudah mempunyai config lain.
+[functions.organizer-api]
+verify_jwt = false

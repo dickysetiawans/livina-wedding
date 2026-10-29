@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "source": "preview",
+    "total": 6
+  },
+  "data": [
+    {
+      "id": "planner",
+      "sort_order": 0,
+      "title": "Wedding Planner",
+      "description": "Dari ide pertama hingga detail terakhir, kami membantu menyusun perjalanan menuju hari pernikahan yang terasa personal dan terencana.",
+      "highlight": "Nikmati perjalanannya. Kami mendampingi setiap langkah Anda."
+    },
+    {
+      "id": "organizer",
+      "sort_order": 1,
+      "title": "Wedding Organizer",
+      "description": "Koordinasi waktu, alur acara, dan seluruh detail di hari istimewa agar Anda dapat hadir sepenuhnya dalam setiap momen.",
+      "highlight": "Anda merayakan cinta. Kami menjaga jalannya acara."
+    },
+    {
+      "id": "sangjit",
+      "sort_order": 2,
+      "title": "Sangjit Planner",
+      "description": "Perayaan tradisi yang direncanakan dengan perhatian pada makna, keluarga, serta setiap rangkaian prosesi.",
+      "highlight": "Tradisi yang bermakna, detail yang terjaga."
+    },
+    {
+      "id": "engagement",
+      "sort_order": 3,
+      "title": "Engagement",
+      "description": "Sebuah awal yang dirayakan bersama orang terdekat, dengan suasana dan detail yang mencerminkan cerita Anda.",
+      "highlight": "Karena awal cerita layak dirayakan."
+    },
+    {
+      "id": "social",
+      "sort_order": 4,
+      "title": "Social Event",
+      "description": "Pertemuan dan perayaan yang disusun dengan perhatian pada pengalaman tamu, suasana, serta momen kebersamaan.",
+      "highlight": "Momen sederhana, kesan yang tinggal lebih lama."
+    },
+    {
+      "id": "corporate",
+      "sort_order": 5,
+      "title": "Corporate Event",
+      "description": "Perencanaan acara yang menyelaraskan identitas, kebutuhan, dan koordinasi agar setiap rangkaian berjalan dengan baik.",
+      "highlight": "Detail yang selaras untuk pengalaman yang berkesan."
+    }
+  ]
+}
