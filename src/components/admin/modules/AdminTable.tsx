@@ -51,6 +51,14 @@ export default function AdminTable({
   const cell = "px-4 py-4 text-start text-sm text-gray-700 dark:text-gray-200";
   function display(row: AdminRecord, key: string) {
     const value = row[key];
+    if (key === "price" && typeof value === "number")
+      return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        maximumFractionDigits: 0,
+      }).format(value);
+    if (key === "package_kind")
+      return t(value === "all_in" ? "allIn" : "nonVenue");
     if (key === "role_id")
       return String(
         roles.find((role) => role.id === value)?.name || value || "—",

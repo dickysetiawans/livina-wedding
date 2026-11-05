@@ -7,8 +7,9 @@ import * as jsxRuntime from 'react/jsx-runtime';
 async function load(path,deps={}) {
  const source=await readFile(new URL(path,import.meta.url),'utf8');
  const code=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;
- const entry=new Module('crew-public-test.cjs');entry.require=name=>{if(name in deps)return deps[name];if(name==='react/jsx-runtime')return jsxRuntime;throw new Error('Unexpected dependency '+name);};entry._compile(code,'crew-public-test.cjs');return entry.exports;
+ const entry=new Module('crew-public-test.cjs');entry.require=name=>{if(name in deps)return deps[name];if(name==='@/lib/wedding/package-inquiry')return inquiry;if(name==='react/jsx-runtime')return jsxRuntime;throw new Error('Unexpected dependency '+name);};entry._compile(code,'crew-public-test.cjs');return entry.exports;
 }
+const inquiry=await load('../src/lib/wedding/package-inquiry.ts');
 const id='f15c80f3-165c-40c2-93b4-c851d98f7c97';
 let photo,signCalls=[],media=[];
 const api={publicConfigured:true,publicRpc:async(name)=>name==='public_content'?{media}:photo,publicPhotoUrl:async(path)=>{assert.equal(typeof path,'string');signCalls.push(path);return 'https://storage.test/object?token=test-'+signCalls.length;}};
@@ -44,23 +45,41 @@ test('streaming video tidak membuka media draft atau menerima multiple Range',as
  media=[{id,kind:'image',storage_path:'owner/image.webp'}];assert.equal((await mediaRoute.GET(new Request('https://livina.test'),params())).status,302);
 });
 const translate=key=>({ownerGroup:'The Owner',crewGroup:'The Crew'}[key]||key), stub=()=>null;
-const one=await load('../src/components/wedding/WeddingCrew.tsx',{'next-intl':{useTranslations:()=>translate},'./WeddingCrewRow':{default:stub},'./Wedding.module.css':{default:{}}});
-const two=await load('../src/components/wedding-luxe/LuxeCrew.tsx',{'next/image':{default:stub},'next-intl/server':{getTranslations:async()=>translate},'./Luxe.module.css':{default:{}}});
+const groups=await load('../src/lib/wedding/crew.ts');
+const crewHook=await load('../src/hooks/useCrewFilter.ts',{'react':{useState:()=>[null,()=>{}]},'@/lib/wedding/crew':groups});
+const crewDeps={'@/hooks/useCrewFilter':{default:crewHook.default},'next-intl':{useTranslations:()=>translate},'@/components/wedding/StoryEventFilter':{default:stub},'./StoryEventFilter':{default:stub}};
+const one=await load('../src/components/wedding/WeddingCrew.tsx',{...crewDeps,'next/image':{default:stub},'./Wedding.module.css':{default:{}}});
+const two=await load('../src/components/wedding-luxe/LuxeCrew.tsx',{...crewDeps,'./LuxePortrait':{default:stub},'./Luxe.module.css':{default:{}}});
 function nodes(node){if(!node||typeof node!=='object')return [];return [node,...[node.props?.children].flat(Infinity).flatMap(nodes)];}
 const founder={id:'owner',name:'Owner Name',role_title:'Leader',biography:'Owner bio',is_founder:true,sort_order:9};
 const member={id:'member',name:'Crew Name',role_title:'Runner',biography:'Crew bio',is_founder:false,sort_order:0};
-test('kedua style menampilkan The Owner sebelum founder lalu The Crew tanpa mengubah profil',async()=>{
- for(const component of [one,two]){
-  const tree=await component.default({members:[member,founder],preview:false});
-  const headings=nodes(tree).filter(node=>node.type==='h2').map(node=>node.props.children).filter(value=>typeof value==='string');
-  assert.deepEqual(headings.filter(value=>['The Owner','The Crew'].includes(value)),['The Owner','The Crew']);
- }
- const rowNodes=nodes(one.default({members:[member,founder]})).filter(node=>node.type===stub);assert.deepEqual(rowNodes.map(node=>node.props.member),[founder,member]);
+test('filter jabatan terurut, tanpa founder atau duplikasi, dan kembali ke Semua bila jabatan hilang',async()=>{
+ const second={...member,id:'second',position_id:'leader',role_title:'Leader',position_sort_order:0,sort_order:2};
+ const rows=[{...member,position_id:'runner',position_sort_order:2},second,{...second,id:'third'}, {...founder,position_id:'owner'}];
+ assert.deepEqual(groups.crewPositions(rows).map(row=>row.id),['leader','runner']);
+ let selected=null;
+ const hook=await load('../src/hooks/useCrewFilter.ts',{'react':{useState:()=>[selected,value=>selected=value]},'@/lib/wedding/crew':groups});
+ let result=hook.default(rows);assert.equal(result.members.length,3);result.select('leader');result=hook.default(rows);assert.deepEqual(result.members.map(row=>row.id),['second','third']);
+ result=hook.default([rows[0],rows[3]]);assert.equal(result.active,null);assert.deepEqual(result.members.map(row=>row.id),['member']);
 });
-test('tanpa founder tidak ada The Owner; founder saja tidak membuat judul The Crew kosong',async()=>{
- for(const component of [one,two])for(const [members,expected] of [[[member],['The Crew']],[[founder],['The Owner']]]){
-  const tree=await component.default({members,preview:false});const headings=nodes(tree).filter(node=>node.type==='h2').map(node=>node.props.children).filter(value=>['The Owner','The Crew'].includes(value));assert.deepEqual(headings,expected);
+test('The Owner menjadi section tersendiri di kedua tema',async()=>{
+ for(const [path,deps] of [
+  ['../src/components/wedding/WeddingOwner.tsx',{'next/image':{default:stub},'./Wedding.module.css':{default:{}}}],
+  ['../src/components/wedding-luxe/LuxeOwner.tsx',{'./LuxePortrait':{default:stub},'./Luxe.module.css':{default:{}}}]
+ ]){
+  const component=await load(path,{...deps,'next-intl/server':{getTranslations:async()=>translate}});
+  const tree=await component.default({member:founder});assert.equal(tree.props.id,'owner');assert.equal(nodes(tree).find(node=>node.type==='h2').props.children,'The Owner');assert.equal(nodes(tree).find(node=>node.type==='h3').props.children,'Owner Name');
  }
+});
+test('kedua style hanya menampilkan non-founder di The Crew',async()=>{
+ for(const component of [one,two]){
+  const tree=component.default({members:[member,founder],preview:false});
+  assert.deepEqual(nodes(tree).filter(node=>node.type==='h3').map(node=>node.props.children),['Crew Name']);
+  assert.equal(nodes(tree).some(node=>node.props?.children==='The Owner'),false);
+ }
+});
+test('Crew dengan founder saja tidak menampilkan section atau filter kosong',()=>{
+ for(const component of [one,two])assert.equal(component.default({members:[founder],preview:false}),null);
 });
 async function heroWithPlayer({blocked=false,reduced=false,filmTitle="Film"}={}){
  const effects=[],updates=[];let index=0,play=0,pause=0;

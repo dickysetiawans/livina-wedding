@@ -16,6 +16,8 @@ export function withAdminPermissions(context: SessionContext): SessionContext {
     "social_links",
     "media",
     "templates",
+    "events",
+    "positions",
   ])
     for (const action of ["read", "create", "update", "delete", "publish"])
       permissions.push(`${area}.${action}`);

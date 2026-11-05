@@ -12,6 +12,7 @@ import Button from "@/components/ui/button/Button";
 import { CrewApiError, saveCrew } from "@/lib/crew/client";
 import { emptyCrew, validateCrew } from "@/lib/crew/validation";
 import type { CrewErrors, CrewInput, CrewMember } from "@/lib/crew/types";
+import MasterDataSelect from "@/components/admin/modules/MasterDataSelect";
 import CrewDialog from "./CrewDialog";
 import CrewPhotoPicker from "./CrewPhotoPicker";
 
@@ -35,7 +36,7 @@ function CrewEditorForm({
     member
       ? {
           name: member.name,
-          role_title: member.role_title,
+          position_id: member.position_id || "",
           is_founder: member.is_founder ?? false,
           biography: member.biography,
           photo_media_id: member.photo_media_id,
@@ -120,21 +121,23 @@ function CrewEditorForm({
           </div>
           <div>
             <Label htmlFor="crew-role">{t("role")} *</Label>
-            <Input
+            <MasterDataSelect
+              table="positions"
               id="crew-role"
-              name="role_title"
-              value={value.role_title}
-              maxLength={150}
-              onChange={(event) => change("role_title", event.target.value)}
+              name="position_id"
+              value={value.position_id}
+              disabled={busy || preview}
               required
-              error={Boolean(errors.role_title)}
-              hint={
-                errors.role_title
-                  ? t(`validation.${errors.role_title}`)
-                  : t("roleHint")
-              }
-              aria-invalid={Boolean(errors.role_title)}
+              onChange={(id) => change("position_id", id)}
             />
+            {errors.position_id && (
+              <p
+                role="alert"
+                className="mt-1 text-xs text-error-600 dark:text-error-400"
+              >
+                {t(`validation.${errors.position_id}`)}
+              </p>
+            )}
           </div>
           <div className="lg:col-span-2">
             <label className="mb-5 flex items-start gap-3 text-sm text-gray-700 dark:text-gray-200">

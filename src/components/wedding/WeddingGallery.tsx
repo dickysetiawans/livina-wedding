@@ -2,6 +2,9 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import useTestimonialFilter from "@/hooks/useTestimonialFilter";
+import StoryMoreButton from "@/components/wedding/StoryMoreButton";
+import StoryEventFilter from "@/components/wedding/StoryEventFilter";
 import { useModal } from "@/hooks/useModal";
 import type { WeddingTestimonial } from "@/lib/wedding/content";
 import StoryDialog from "./StoryDialog";
@@ -16,6 +19,7 @@ export default function WeddingGallery({
   preview = false,
 }: WeddingGalleryProps) {
   const t = useTranslations("wedding");
+  const filter = useTestimonialFilter(testimonials);
   const modal = useModal();
   const [selected, setSelected] = useState<WeddingTestimonial | null>(null);
   return (
@@ -30,8 +34,20 @@ export default function WeddingGallery({
         </h2>
         <p>{t("storiesSubtitle")}</p>
       </header>
-      <div className={styles.storyGrid}>
-        {testimonials.map((review, index) => {
+      <StoryEventFilter
+        events={filter.events}
+        active={filter.active}
+        onChange={filter.select}
+        tone="dark"
+        controls="stories-results"
+        count={filter.reviews.length}
+      />
+      <div
+        key={filter.active ?? "all"}
+        id="stories-results"
+        className={styles.storyGrid}
+      >
+        {filter.reviews.map((review, index) => {
           const photo =
             review.photo_url ||
             (review.photo_media_id
@@ -72,6 +88,11 @@ export default function WeddingGallery({
           );
         })}
       </div>
+      <StoryMoreButton
+        show={filter.hasMore}
+        onClick={filter.showMore}
+        controls="stories-results"
+      />
       {!testimonials.length && (
         <p className={styles.referenceCredit}>{t("storiesEmpty")}</p>
       )}

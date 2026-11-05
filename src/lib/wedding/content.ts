@@ -1,4 +1,5 @@
 import "server-only";
+import { emptyCatalog, type PackageCatalog } from "./packages";
 import type { WhatsAppContact } from "./whatsapp";
 import { publicConfigured, publicRpc } from "@/lib/crew/public";
 import type { PublicCrewMember } from "@/lib/crew/types";
@@ -8,7 +9,20 @@ export interface WeddingService {
   description: string;
   highlight: string | null;
 }
+export interface TestimonialCrewMember {
+  id: string;
+  crew_id: string;
+  name: string;
+  position_name: string;
+  photo_media_id: string | null;
+  video_media_id: string | null;
+}
 export interface WeddingTestimonial {
+  crew_assignments?: TestimonialCrewMember[];
+  created_at?: string;
+  event_id?: string | null;
+  event_name?: string | null;
+  event_sort_order?: number | null;
   id: string;
   couple_name: string;
   venue: string;
@@ -19,7 +33,9 @@ export interface WeddingTestimonial {
   video_media_id?: string | null;
 }
 export interface WeddingContent {
+  package_catalog?: PackageCatalog;
   settings: {
+    package_inquiry_template?: string | null;
     brand_name: string;
     hero_title: string;
     hero_subtitle: string;
@@ -39,6 +55,7 @@ export interface WeddingContent {
 }
 export async function weddingContent(): Promise<WeddingContent> {
   const empty: WeddingContent = {
+    package_catalog: emptyCatalog,
     settings: null,
     services: [],
     team_members: [],
@@ -49,6 +66,7 @@ export async function weddingContent(): Promise<WeddingContent> {
   try {
     const content = await publicRpc<WeddingContent>("public_content");
     return {
+      package_catalog: content.package_catalog || emptyCatalog,
       settings: content.settings || null,
       services: content.services || [],
       team_members: content.team_members || [],

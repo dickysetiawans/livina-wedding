@@ -740,3 +740,183 @@ button.crewTrigger {
     transition: none;
   }
 }
+
+.owner {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 4rem 5.5vw 6rem;
+}
+.ownerLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 7vw, 8rem);
+  align-items: center;
+  max-width: 78rem;
+  margin-inline: auto;
+}
+.ownerPortrait {
+  position: relative;
+  aspect-ratio: 3/4;
+  width: min(100%, 27rem);
+  margin-inline: auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--color-livina-line);
+}
+.ownerInitial {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: var(--muted);
+  font-family: var(--font-wedding-serif), serif;
+  font-size: 6rem;
+}
+.ownerRole {
+  color: var(--muted);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+}
+.ownerCopy h3 {
+  font-family: var(--font-wedding-serif), serif;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-block: 1rem 2rem;
+  overflow-wrap: anywhere;
+}
+.ownerBio {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.crewCardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  max-width: 90rem;
+  margin-inline: auto;
+}
+.crewCard {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-livina-line);
+  border-radius: 1rem;
+  background: var(--ink);
+}
+.crewCardPhoto {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--color-livina-line);
+}
+.crewCardCopy {
+  padding: 1.5rem;
+}
+.crewCardCopy h3 {
+  font-family: var(--font-wedding-serif), serif;
+  font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+  line-height: 1.25;
+  font-weight: 400;
+  margin-block: 1rem;
+  overflow-wrap: anywhere;
+}
+.crewCardCopy p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.9;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.positionBadge {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--color-livina-line);
+  border-radius: 999px;
+  color: var(--paper);
+  font-size: 0.65rem;
+  line-height: 1.5;
+}
+@media (max-width: 1023px) {
+  .crewCardGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 767px) {
+  .ownerLayout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ownerCopy {
+    text-align: center;
+  }
+  .crewCardGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.crewCardGrid {
+  max-width: 68rem;
+  gap: 1.5rem;
+}
+.crewCard {
+  max-width: 21rem;
+  width: 100%;
+  justify-self: center;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.crewCardPhoto {
+  display: block;
+  width: 100%;
+  max-width: 16rem;
+  margin: 1.25rem auto 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
+.crewCard:hover,
+.crewCard:focus-within {
+  transform: translateY(-0.5rem);
+  box-shadow: var(--shadow-theme-lg);
+}
+.crewCardCopy h3 {
+  font-size: 1.7rem;
+}
+.crewCardPhoto:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .crewCard {
+    transition: none;
+  }
+  .crewCard:hover,
+  .crewCard:focus-within {
+    transform: none;
+  }
+}
+
+.crewCardGrid,
+.storyGrid {
+  animation: filterShowUp 0.45s ease both;
+}
+@keyframes filterShowUp {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .crewCardGrid,
+  .storyGrid {
+    animation: none;
+  }
+}

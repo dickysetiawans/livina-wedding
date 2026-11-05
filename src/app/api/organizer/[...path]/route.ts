@@ -13,7 +13,7 @@ import {
   validateAdminValues,
   type AdminValues,
 } from "@/lib/admin/modules";
-import { uuidPattern } from "@/lib/crew/validation";
+import { uuidPattern, validateCrew, crewPayload } from "@/lib/crew/validation";
 import { passwordPayload } from "@/lib/auth/password";
 
 async function handle(request: Request, params: Promise<{ path: string[] }>) {
@@ -62,6 +62,25 @@ async function handle(request: Request, params: Promise<{ path: string[] }>) {
       : await request.text();
     if (body && body.length > (moduleCode === "website" ? 131072 : 32768))
       return Response.json(null, { status: 413, headers: privateHeaders });
+    if (
+      collection === "team_members" &&
+      body &&
+      ["POST", "PATCH"].includes(request.method)
+    ) {
+      const input = JSON.parse(body);
+      if (
+        !input ||
+        Array.isArray(input) ||
+        typeof input.name !== "string" ||
+        typeof input.biography !== "string" ||
+        Object.keys(validateCrew(input)).length
+      )
+        return Response.json(
+          { code: "VALIDATION" },
+          { status: 422, headers: privateHeaders },
+        );
+      body = JSON.stringify(crewPayload(input));
+    }
     if (moduleCode && body && ["POST", "PATCH"].includes(request.method)) {
       if (moduleCode === "users" && request.method === "POST")
         return Response.json(null, { status: 403, headers: privateHeaders });

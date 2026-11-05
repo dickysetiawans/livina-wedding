@@ -2,7 +2,7 @@ import type { CrewErrors, CrewInput } from "./types";
 
 export const emptyCrew: CrewInput = {
   name: "",
-  role_title: "",
+  position_id: "",
   is_founder: false,
   biography: "",
   photo_media_id: null,
@@ -14,11 +14,16 @@ export const uuidPattern =
 
 export function validateCrew(value: CrewInput): CrewErrors {
   const errors: CrewErrors = {};
-  for (const field of ["name", "role_title", "biography"] as const) {
+  for (const field of ["name", "biography"] as const) {
     if (!value[field].trim()) errors[field] = "required";
     else if (value[field].trim().length > (field === "biography" ? 2000 : 150))
       errors[field] = "tooLong";
   }
+  if (
+    typeof value.position_id !== "string" ||
+    !uuidPattern.test(value.position_id)
+  )
+    errors.position_id = "requiredPosition";
   if (
     !Number.isSafeInteger(value.sort_order) ||
     value.sort_order < 0 ||
@@ -37,7 +42,7 @@ export function validateCrew(value: CrewInput): CrewErrors {
 export function crewPayload(value: CrewInput): CrewInput {
   return {
     name: value.name.trim(),
-    role_title: value.role_title.trim(),
+    position_id: value.position_id,
     is_founder: value.is_founder,
     biography: value.biography.trim(),
     photo_media_id: value.photo_media_id,

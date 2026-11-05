@@ -2,6 +2,7 @@ export interface CrewMember {
   id: string;
   name: string;
   role_title: string;
+  position_id: string;
   is_founder: boolean;
   biography: string;
   photo_media_id: string | null;
@@ -14,7 +15,7 @@ export interface CrewMember {
 export type CrewInput = Pick<
   CrewMember,
   | "name"
-  | "role_title"
+  | "position_id"
   | "is_founder"
   | "biography"
   | "photo_media_id"
@@ -54,6 +55,8 @@ export interface SessionContext {
   permissions: string[];
 }
 export interface PublicCrewMember {
+  position_id?: string | null;
+  position_sort_order?: number;
   id: string;
   name: string;
   role_title: string;

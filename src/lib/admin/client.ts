@@ -61,9 +61,11 @@ export async function adminRequest<T>(
               ? "duplicate"
               : code === "23503"
                 ? "inUse"
-                : response.status === 503
-                  ? "unavailable"
-                  : "request",
+                : code === "23514" && path.includes("package")
+                  ? "packageRelation"
+                  : response.status === 503
+                    ? "unavailable"
+                    : "request",
       response.status,
     );
   }
@@ -156,4 +158,27 @@ export async function deleteAdmin(module: ModuleCode, id: string) {
     "DELETE",
   );
   if (!rows.length) throw new AdminApiError("stale");
+}
+
+export interface MasterOption {
+  id: string;
+  name: string;
+  sort_order: number;
+  category_id?: string;
+  has_subcategories?: boolean;
+  is_active?: boolean;
+}
+export async function masterOptions(
+  table:
+    "events" | "positions" | "package_categories" | "package_subcategories",
+): Promise<MasterOption[]> {
+  const result: MasterOption[] = [];
+  for (let offset = 0; offset < 10000; offset += 1000) {
+    const rows = await adminRequest<MasterOption[]>(
+      `rest/v1/${table}?select=${table.startsWith("package_") ? "*" : "id,name,sort_order"}&order=sort_order.asc,name.asc,id.asc&limit=1000&offset=${offset}`,
+    );
+    result.push(...rows);
+    if (rows.length < 1000) return result;
+  }
+  throw new AdminApiError("tooMany");
 }

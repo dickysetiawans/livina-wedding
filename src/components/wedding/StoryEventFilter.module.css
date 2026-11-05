@@ -1,0 +1,46 @@
+.filters {
+  --filter-background: var(--color-livina-filter-active);
+  --filter-text: var(--color-white);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-block: 0 3rem;
+}
+.button {
+  padding: 0.6rem 1.15rem;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 999px;
+  background: var(--color-white);
+  color: var(--color-livina-ink);
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.button[aria-pressed="true"] {
+  background: var(--filter-background);
+  border-color: var(--filter-background);
+  color: var(--filter-text);
+}
+.button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}
+
+.more {
+  display: flex;
+  justify-content: center;
+  margin-block: 3rem 0;
+}
+.more .button {
+  font-size: 0.85rem;
+  padding: 0.85rem 1.5rem;
+}

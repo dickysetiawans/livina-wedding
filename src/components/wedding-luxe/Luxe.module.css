@@ -440,7 +440,7 @@
   transition:
     transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
     filter 1s;
-  filter: saturate(0.72);
+  filter: none;
 }
 .founder .portrait {
   border-radius: 45% 45% 0.5rem 0.5rem;
@@ -706,12 +706,10 @@
   from {
     opacity: 0;
     transform: translateY(1.3rem);
-    filter: blur(5px);
   }
   to {
     opacity: 1;
     transform: none;
-    filter: blur(0);
   }
 }
 @keyframes unveilImage {
@@ -950,5 +948,82 @@
   }
   .progress {
     display: none;
+  }
+}
+
+.owner {
+  max-width: 110rem;
+  margin-inline: auto;
+  padding: 8rem 7vw 2rem;
+}
+.positionBadge {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--gold);
+  font-size: 0.65rem;
+  line-height: 1.5;
+}
+
+.memberPhotoButton {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  width: min(100%, 9rem);
+  margin-inline: auto;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.member .memberPhotoButton .portrait {
+  width: 100%;
+  max-width: 9rem;
+  border-radius: 0.75rem;
+}
+.memberPhotoButton:hover,
+.memberPhotoButton:focus,
+.memberPhotoButton:active {
+  transform: translateY(-0.5rem);
+  box-shadow: var(--shadow-theme-lg);
+}
+.memberPhotoButton:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+.member:hover .portrait img {
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .memberPhotoButton {
+    transition: none;
+  }
+  .memberPhotoButton:hover,
+  .memberPhotoButton:focus,
+  .memberPhotoButton:active {
+    transform: none;
+  }
+}
+
+.memberGrid,
+.gallery {
+  animation: filterShowUp 0.45s ease both;
+}
+@keyframes filterShowUp {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .memberGrid,
+  .gallery {
+    animation: none;
   }
 }

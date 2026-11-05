@@ -11,6 +11,7 @@ import CrewPortrait from "@/components/crew/CrewPortrait";
 import { useModal } from "@/hooks/useModal";
 import type { ListResult, SessionContext } from "@/lib/crew/types";
 import {
+  type CrewAssignment,
   modules,
   type ModuleCode,
   type AdminRecord,
@@ -321,6 +322,39 @@ function ModuleManager({ module, context }: AdminManagerProps) {
                     />
                   ) : typeof detail[field.key] === "boolean" ? (
                     t(detail[field.key] ? "yes" : "no")
+                  ) : field.type === "crew_assignments" ? (
+                    <ul className="space-y-2">
+                      {(
+                        (detail.crew_assignments as CrewAssignment[]) || []
+                      ).map((row) => (
+                        <li key={row.id}>
+                          {row.crew_name || row.crew_id} —{" "}
+                          {row.position_name || "—"}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : field.type === "benefits" ? (
+                    <ol className="list-decimal space-y-1 ps-5">
+                      {((detail.benefits as string[]) || []).map(
+                        (benefit, index) => (
+                          <li key={index}>{benefit}</li>
+                        ),
+                      )}
+                    </ol>
+                  ) : field.key === "price" ? (
+                    new Intl.NumberFormat("id-ID", {
+                      style: "currency",
+                      currency: "IDR",
+                      maximumFractionDigits: 0,
+                    }).format(Number(detail.price))
+                  ) : field.type === "package_kind" ? (
+                    t(detail.package_kind === "all_in" ? "allIn" : "nonVenue")
+                  ) : field.type === "package_category" ? (
+                    String(detail.category_name || "—")
+                  ) : field.type === "package_subcategory" ? (
+                    String(detail.subcategory_name || "—")
+                  ) : field.key === "event_id" ? (
+                    String(detail.event_name || "—")
                   ) : field.key === "role_id" ? (
                     String(
                       roles.find((role) => role.id === detail.role_id)?.name ||

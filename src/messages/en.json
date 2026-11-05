@@ -69,7 +69,9 @@
       "services": "Layanan",
       "crew": "The Crew",
       "stories": "Cerita",
-      "contact": "Hubungi kami"
+      "contact": "Hubungi kami",
+      "owner": "Pendiri",
+      "packages": "Paket"
     },
     "eyebrow": "Wedding planner & organizer",
     "explore": "Jelajahi layanan",
@@ -190,7 +192,16 @@
     },
     "storyVideo": "Video pernikahan {name}",
     "ownerGroup": "The Owner",
-    "crewGroup": "The Crew"
+    "crewGroup": "The Crew",
+    "storiesEventFilter": "Filter testimoni berdasarkan acara",
+    "storiesAllEvents": "Semua",
+    "storiesResultCount": "{count} testimoni ditampilkan.",
+    "storiesShowMore": "Tunjukkan lebih banyak",
+    "crewPositionFilter": "Filter anggota berdasarkan jabatan",
+    "crewAllPositions": "Semua",
+    "crewResultCount": "{count} anggota ditampilkan.",
+    "eventCrew": "Crew yang bertugas",
+    "eventCrewVideo": "Video {name} saat event"
   },
   "crew": {
     "previewHint": "Pratinjau tampilan. Penyimpanan dan unggah foto tersedia setelah Supabase Livina dikonfigurasi.",
@@ -213,11 +224,11 @@
     "saved": "Data anggota berhasil disimpan.",
     "deleted": "Anggota berhasil dihapus.",
     "name": "Nama",
-    "role": "Posisi / jabatan",
+    "role": "Jabatan",
     "biography": "Kata-kata / tentang anggota",
     "biographyHint": "Tulis deskripsi singkat atau kutipan anggota. Maksimal 2.000 karakter.",
     "nameHint": "Nama yang ditampilkan di website",
-    "roleHint": "Posisi anggota di tim Livina",
+    "roleHint": "Pilih jabatan dari modul Jabatan.",
     "photo": "Foto anggota",
     "noPhoto": "Belum ada foto",
     "photoOptional": "Foto opsional. Jika belum ada, website menampilkan inisial nama.",
@@ -290,7 +301,8 @@
       "invalidOrder": "Urutan harus berupa bilangan bulat 0 sampai 2.147.483.647.",
       "invalidStatus": "Pilih status draft atau terbit.",
       "invalidPhoto": "Pilih foto yang valid dari pustaka media.",
-      "invalidFounder": "Penanda founder tidak valid."
+      "invalidFounder": "Penanda founder tidak valid.",
+      "requiredPosition": "Pilih jabatan dari data master."
     },
     "errors": {
       "configuration": "Konfigurasi Supabase Livina belum tersedia.",
@@ -1196,7 +1208,13 @@
       "clients": "Client & Testimoni",
       "services": "Service",
       "templates": "Template",
-      "website": "Pengaturan Website"
+      "website": "Pengaturan Website",
+      "events": "Acara",
+      "positions": "Jabatan",
+      "package_categories": "Kategori Paket",
+      "package_subcategories": "Subkategori Paket",
+      "packages": "Paket",
+      "package_gallery": "Galeri Paket"
     },
     "descriptions": {
       "users": "Kelola akun pengelola. Setiap pengguna mempunyai tepat satu role. Akun baru menerima undangan untuk membuat kata sandi.",
@@ -1204,7 +1222,13 @@
       "permissions": "Kelola katalog hak akses. Kode harus sesuai aksi yang diperiksa backend; menambah kode baru tidak otomatis membuat fitur baru.",
       "clients": "Kelola nama pasangan, lokasi, foto, ulasan, video opsional, dan izin publikasi untuk kedua style.",
       "services": "Kelola judul, ringkasan, deskripsi, foto opsional, urutan, dan publikasi layanan untuk kedua style.",
-      "website": "Kelola hero, foto/video utama, slogan, serta kontak website. Satu pengaturan dipakai bersama oleh Style 1 dan Style 2."
+      "website": "Kelola hero, foto/video utama, slogan, serta kontak website. Satu pengaturan dipakai bersama oleh Style 1 dan Style 2.",
+      "events": "Kelola nama acara dan urutan filter testimoni pada setiap template. Pilih acara ini saat menambah atau mengedit Client.",
+      "positions": "Kelola jabatan yang dapat dipilih pada Crew. Mengubah nama jabatan memperbarui label pada website. Data yang masih dipakai tidak dapat dihapus.",
+      "package_categories": "Kelola kategori paket, urutan, status aktif, dan penggunaan subkategori.",
+      "package_subcategories": "Kelola pilihan turunan pada kategori paket yang menggunakan subkategori.",
+      "packages": "Kelola harga All In/Non Venue beserta benefit untuk setiap kategori dan subkategori.",
+      "package_gallery": "Kelola foto berdasarkan kategori/subkategori paket. Pilih dan crop foto, lalu tekan Simpan."
     },
     "fields": {
       "name": "Nama",
@@ -1240,7 +1264,21 @@
       "contact_email": "Email kontak",
       "whatsapp_number": "Nomor WhatsApp",
       "copyright_start_year": "Tahun mulai hak cipta",
-      "whatsapp_contacts": "Daftar kontak WhatsApp"
+      "whatsapp_contacts": "Daftar kontak WhatsApp",
+      "event_id": "Acara",
+      "event_name": "Acara",
+      "position_id": "Jabatan",
+      "has_subcategories": "Menggunakan subkategori",
+      "category_id": "Kategori paket",
+      "subcategory_id": "Subkategori paket",
+      "category_name": "Kategori",
+      "subcategory_name": "Subkategori",
+      "package_kind": "Jenis paket",
+      "price": "Harga (Rp)",
+      "benefits": "Daftar benefit",
+      "caption": "Keterangan foto",
+      "package_inquiry_template": "Template pesan pertanyaan paket",
+      "crew_assignments": "Crew yang bertugas"
     },
     "hints": {
       "email": "Saat edit, email mengikuti akun Supabase Auth dan tidak diubah melalui profil.",
@@ -1251,7 +1289,14 @@
       "publication_consent": "Wajib sebelum diterbitkan. Waktu persetujuan dicatat server ketika pilihan ini disimpan.",
       "hero_poster_id": "Wajib jika memakai video utama.",
       "whatsapp_number": "Gunakan nomor internasional, misalnya +6281234567890.",
-      "film_title": "Satu teks bagian film untuk Style 1 dan Style 2. Isi sesuai kata-kata yang ingin ditampilkan."
+      "film_title": "Satu teks bagian film untuk Style 1 dan Style 2. Isi sesuai kata-kata yang ingin ditampilkan.",
+      "event_id": "Pilih satu acara untuk pengelompokan dan filter testimoni.",
+      "has_subcategories": "Aktifkan untuk kategori seperti Adat atau Internasional. Pilihan ini tidak dapat diubah setelah kategori digunakan.",
+      "price": "Isi angka rupiah penuh, contoh 190000000 untuk Rp190 juta.",
+      "benefits": "Satu baris untuk satu benefit. Gunakan Naik/Turun untuk mengatur urutan.",
+      "category_id": "Kelola pilihan melalui Kategori Paket dan Subkategori Paket.",
+      "package_kind": "Pilih All In atau Non Venue. Galeri dikelompokkan berdasarkan kategori/subkategori saja.",
+      "package_inquiry_template": "Kosongkan untuk pesan bawaan. Penanda: '{sapaan}', '{nama_kontak}', '{kategori}', '{subkategori}', '{jenis_paket}', '{nama_paket}', '{harga}', '{benefit}'."
     },
     "add": "Tambah data",
     "edit": "Edit",
@@ -1326,14 +1371,17 @@
       "invalid": "Nilai atau format tidak valid.",
       "tooLong": "Teks melebihi batas kolom.",
       "consent": "Izin publikasi wajib disetujui sebelum terbit.",
-      "contacts": "Periksa setiap kontak: nama wajib diisi, nomor harus memakai +kode negara, dan urutan berupa angka positif atau nol."
+      "contacts": "Periksa setiap kontak: nama wajib diisi, nomor harus memakai +kode negara, dan urutan berupa angka positif atau nol.",
+      "benefits": "Tambahkan 1–50 benefit; setiap benefit wajib diisi, maksimal 500 karakter.",
+      "inquiryTemplate": "Template maksimal 4000 karakter dan hanya boleh menggunakan penanda yang tercantum pada panduan.",
+      "crewAssignments": "Pilih Crew dan jabatan setiap baris. Crew tidak boleh berulang, maksimal 50 penugasan."
     },
     "errors": {
       "network": "Koneksi gagal. Silakan coba kembali.",
       "session": "Sesi berakhir. Silakan masuk kembali.",
       "forbidden": "Anda tidak memiliki izin untuk tindakan ini.",
-      "migration": "Struktur modul belum tersedia atau belum dapat dibaca. Terapkan migration admin_console sesuai panduan lalu muat ulang.",
-      "duplicate": "Data sudah ada. Periksa kode unik atau penanda founder.",
+      "migration": "Struktur modul belum tersedia atau belum dapat dibaca. Terapkan migration terbaru sesuai panduan lalu muat ulang.",
+      "duplicate": "Data dengan nama atau kode tersebut sudah ada. Periksa kembali nilai yang diisi.",
       "inUse": "Data masih dipakai dan tidak dapat dihapus.",
       "unavailable": "Layanan belum tersedia. Periksa konfigurasi Supabase.",
       "request": "Permintaan belum berhasil. Periksa data dan izin akun, lalu coba kembali.",
@@ -1349,14 +1397,38 @@
       "photoInvalid": "Foto hasil crop belum dapat dibaca. Pilih dan crop ulang foto, lalu simpan kembali.",
       "videoFormat": "Gunakan video MP4 dengan codec H.264 dan audio AAC (atau tanpa audio). WebM, HEVC dan MP4 terfragmentasi perlu diekspor ulang terlebih dahulu.",
       "videoLimit": "Video maksimal 20 MB, 60 detik dan Full HD (1920 × 1080 atau 1080 × 1920).",
-      "videoPoster": "Poster video belum siap. Pilih ulang video agar poster dibuat otomatis."
+      "videoPoster": "Poster video belum siap. Pilih ulang video agar poster dibuat otomatis.",
+      "packageRelation": "Kategori/subkategori tidak sesuai atau benefit tidak valid. Periksa pilihan dan muat ulang data."
     },
     "templateHint": "Pilih satu template untuk halaman utama /. Pilihan hanya Style 1 dan Style 2; template tidak dapat ditambahkan atau dihapus melalui admin.",
     "previewTemplate": "Buka pratinjau",
     "activateTemplate": "Aktifkan template",
     "templateSaved": "Template aktif berhasil disimpan. Pengunjung halaman utama akan diarahkan ke template ini.",
     "deletePermissionHint": "Hapus {name}? Permission ini juga akan dilepas dari seluruh role yang menggunakannya.",
-    "serviceSlugAuto": "Slug otomatis: {slug}. Jika sudah dipakai, nomor ditambahkan saat disimpan."
+    "serviceSlugAuto": "Slug otomatis: {slug}. Jika sudah dipakai, nomor ditambahkan saat disimpan.",
+    "masterLoading": "Memuat pilihan…",
+    "chooseEvent": "Pilih acara",
+    "choosePosition": "Pilih jabatan",
+    "masterUnavailable": "Pilihan belum dapat dibaca",
+    "masterEmpty": "Belum ada data {module}. Tambahkan melalui modul tersebut atau hubungi administrator.",
+    "choosePackageCategory": "Pilih kategori paket",
+    "choosePackageSubcategory": "Pilih subkategori paket",
+    "allIn": "All In",
+    "nonVenue": "Non Venue",
+    "addBenefit": "Tambah benefit",
+    "benefitNumber": "Benefit {number}",
+    "benefitUp": "Naik",
+    "benefitDown": "Turun",
+    "packageLoadError": "Pilihan paket gagal dimuat. Coba kembali.",
+    "packageMasterEmpty": "Isi kategori/subkategori yang sesuai terlebih dahulu melalui menu master.",
+    "assignmentHint": "Pilih Crew dan jabatan saat event. Jabatan ini terpisah dari jabatan utama Crew. Foto/video event opsional; tanpa foto event, website memakai foto profil Crew yang published.",
+    "assignmentLoadError": "Daftar Crew/Jabatan gagal dimuat. Pastikan akun memiliki izin membaca Crew dan coba kembali.",
+    "assignmentNumber": "Crew {number}",
+    "chooseCrew": "Pilih Crew",
+    "eventPosition": "Jabatan saat event",
+    "assignmentPhoto": "Foto saat event (opsional)",
+    "assignmentVideo": "Video saat event (opsional)",
+    "addAssignment": "Tambah Crew bertugas"
   },
   "websiteSettings": {
     "intro": "Satu pengaturan untuk Style 1 dan Style 2: identitas, video utama, bagian Cinta dalam setiap detail, serta daftar kontak. Terbitkan agar perubahan tampil di website.",
@@ -1376,5 +1448,25 @@
     "film": "Video utama & Cinta dalam setiap detail",
     "contact": "Informasi kontak",
     "publication": "Publikasi"
+  },
+  "weddingPackages": {
+    "title": "Paket Pernikahan",
+    "eyebrow": "Dirancang untuk hari istimewa Anda",
+    "intro": "Temukan pilihan paket dan detail layanan yang sesuai dengan perayaan Anda.",
+    "categories": "Kategori paket",
+    "subcategories": "Subkategori paket",
+    "kinds": "Jenis paket",
+    "allIn": "All In",
+    "nonVenue": "Non Venue",
+    "benefits": "Benefit yang Anda dapatkan",
+    "showMore": "Tunjukkan lebih banyak harga",
+    "results": "{category}, {kind}: {count} dari {total} paket ditampilkan.",
+    "generatePdf": "Unduh semua paket (PDF)",
+    "packagePdf": "Unduh PDF paket ini",
+    "askPackage": "Tanyakan Paket Ini",
+    "chooseContact": "Hubungi tim Livina",
+    "noContacts": "Kontak WhatsApp belum tersedia.",
+    "messageHint": "Pesan otomatis terisi di WhatsApp. Anda dapat memeriksanya sebelum menekan Kirim.",
+    "defaultMessage": "Halo Kak {nama_kontak}, selamat {sapaan}.\nSaya tertarik dengan paket berikut:\n\nKategori: {kategori}\nSubkategori: {subkategori}\nJenis: {jenis_paket}\nNama paket: {nama_paket}\nHarga: {harga}\n\nBenefit:\n{benefit}\n\nApakah paket dan harga tersebut masih berlaku? Boleh saya mendapatkan informasi lebih lanjut? Terima kasih."
   }
 }

@@ -6,6 +6,7 @@
   --font-*: initial;
   --font-outfit: Outfit, sans-serif;
   --font-editorial: Georgia, "Times New Roman", serif;
+  --color-livina-filter-active: #12362f;
   --color-livina-ink: #0b0b0b;
   --color-livina-muted: #8b8b8b;
   --color-livina-line: #2b2b2b;
@@ -1156,4 +1157,8 @@ html:has(#livina-luxe) {
   html:has(#livina-luxe) {
     scroll-behavior: auto;
   }
+}
+
+body:has([aria-modal="true"]) [data-cursor] {
+  opacity: 0 !important;
 }

@@ -18,6 +18,7 @@ import {
   type AdminValue,
 } from "@/lib/admin/modules";
 import { AdminApiError, saveAdmin } from "@/lib/admin/client";
+import PackageClassification from "./PackageClassification";
 import AdminFieldControl from "./AdminFieldControl";
 
 interface AdminEditorProps {
@@ -53,6 +54,7 @@ function AdminEditorForm({
     ...emptyValues(module),
     ...record,
   }));
+  const [needsSubcategory, setNeedsSubcategory] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -65,6 +67,8 @@ function AdminEditorForm({
     event.preventDefault();
     if (readOnly || locked.current || mediaBusy) return;
     const issues = validateAdminValues(module, value, Boolean(record));
+    if (needsSubcategory && !value.subcategory_id)
+      issues.subcategory_id = "required";
     setErrors(issues);
     if (Object.keys(issues).length) {
       form.current
@@ -115,7 +119,8 @@ function AdminEditorForm({
           .filter(
             (field) =>
               (!record || field.key !== "auth_user_id") &&
-              !(module === "services" && field.key === "slug"),
+              !(module === "services" && field.key === "slug") &&
+              field.type !== "package_subcategory",
           )
           .map((field) => (
             <div
@@ -124,6 +129,9 @@ function AdminEditorForm({
                 field.type === "textarea" ||
                 field.type === "checkbox" ||
                 field.type === "contacts" ||
+                field.type === "crew_assignments" ||
+                field.type === "benefits" ||
+                field.type === "package_category" ||
                 (module === "website" && Boolean(sections[field.key]))
                   ? "min-w-0 lg:col-span-2"
                   : "min-w-0"
@@ -134,47 +142,71 @@ function AdminEditorForm({
                   {w(sections[field.key])}
                 </h2>
               )}
-              <AdminFieldControl
-                field={field}
-                value={value[field.key] ?? null}
-                error={errors[field.key]}
-                editing={Boolean(record)}
-                disabled={
-                  busy ||
-                  readOnly ||
-                  (module === "roles" &&
-                    record?.code === "admin" &&
-                    ["code", "is_active"].includes(field.key))
-                }
-                roles={roles}
-                permissions={permissions}
-                canPublish={permissions.includes(
-                  `${definition.permission}.publish`,
-                )}
-                name={
-                  field.type === "status"
-                    ? definition.permission
-                    : String(
-                        value.name ||
-                          value.title ||
-                          value.couple_name ||
-                          t(`modules.${module}`),
-                      )
-                }
-                onPosterChange={
-                  module === "website" && field.key === "hero_video_id"
-                    ? (id) => change("hero_poster_id", id)
-                    : undefined
-                }
-                onChange={(next) => change(field.key, next)}
-                onBusyChange={(pending) =>
-                  setUploads((current) =>
-                    current[field.key] === pending
-                      ? current
-                      : { ...current, [field.key]: pending },
-                  )
-                }
-              />
+              {field.type === "package_category" ? (
+                <>
+                  <PackageClassification
+                    category={String(value.category_id || "")}
+                    subcategory={String(value.subcategory_id || "")}
+                    disabled={busy || readOnly}
+                    onlyParents={module === "package_subcategories"}
+                    onRequired={setNeedsSubcategory}
+                    onChange={(category, subcategory) => {
+                      change("category_id", category);
+                      change("subcategory_id", subcategory);
+                    }}
+                  />
+                  {(errors.category_id || errors.subcategory_id) && (
+                    <p
+                      role="alert"
+                      className="text-sm text-error-600 dark:text-error-400"
+                    >
+                      {t("validation.required")}
+                    </p>
+                  )}
+                </>
+              ) : (
+                <AdminFieldControl
+                  field={field}
+                  value={value[field.key] ?? null}
+                  error={errors[field.key]}
+                  editing={Boolean(record)}
+                  disabled={
+                    busy ||
+                    readOnly ||
+                    (module === "roles" &&
+                      record?.code === "admin" &&
+                      ["code", "is_active"].includes(field.key))
+                  }
+                  roles={roles}
+                  permissions={permissions}
+                  canPublish={permissions.includes(
+                    `${definition.permission}.publish`,
+                  )}
+                  name={
+                    field.type === "status"
+                      ? definition.permission
+                      : String(
+                          value.name ||
+                            value.title ||
+                            value.couple_name ||
+                            t(`modules.${module}`),
+                        )
+                  }
+                  onPosterChange={
+                    module === "website" && field.key === "hero_video_id"
+                      ? (id) => change("hero_poster_id", id)
+                      : undefined
+                  }
+                  onChange={(next) => change(field.key, next)}
+                  onBusyChange={(pending) =>
+                    setUploads((current) =>
+                      current[field.key] === pending
+                        ? current
+                        : { ...current, [field.key]: pending },
+                    )
+                  }
+                />
+              )}
               {module === "services" && field.key === "title" && (
                 <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
                   {t("serviceSlugAuto", {

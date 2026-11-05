@@ -2,6 +2,9 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import useTestimonialFilter from "@/hooks/useTestimonialFilter";
+import StoryMoreButton from "@/components/wedding/StoryMoreButton";
+import StoryEventFilter from "@/components/wedding/StoryEventFilter";
 import { useModal } from "@/hooks/useModal";
 import StoryDialog from "@/components/wedding/StoryDialog";
 import type { WeddingTestimonial } from "@/lib/wedding/content";
@@ -17,6 +20,7 @@ export default function LuxeGallery({
 }: LuxeGalleryProps) {
   const t = useTranslations("wedding");
   const l = useTranslations("luxe");
+  const filter = useTestimonialFilter(testimonials);
   const modal = useModal();
   const [selected, setSelected] = useState<WeddingTestimonial | null>(null);
   return (
@@ -30,8 +34,20 @@ export default function LuxeGallery({
         <h2 id="luxe-stories-title">{t("storiesTitle")}</h2>
         <p>{t("storiesSubtitle")}</p>
       </header>
-      <div className={styles.gallery}>
-        {testimonials.map((review) => {
+      <StoryEventFilter
+        events={filter.events}
+        active={filter.active}
+        onChange={filter.select}
+        tone="light"
+        controls="luxe-stories-results"
+        count={filter.reviews.length}
+      />
+      <div
+        key={filter.active ?? "all"}
+        id="luxe-stories-results"
+        className={styles.gallery}
+      >
+        {filter.reviews.map((review) => {
           const photo =
             review.photo_url ||
             (review.photo_media_id
@@ -78,6 +94,11 @@ export default function LuxeGallery({
           );
         })}
       </div>
+      <StoryMoreButton
+        show={filter.hasMore}
+        onClick={filter.showMore}
+        controls="luxe-stories-results"
+      />
       {!testimonials.length && (
         <p className={styles.credit}>{t("storiesEmpty")}</p>
       )}

@@ -16,7 +16,16 @@ export function publishedSections(content: WeddingPageContent) {
   );
   const ids = [
     ...(content.services.length ? ["services"] : []),
-    ...(content.team_members.length ? ["crew"] : []),
+    ...(content.package_catalog?.packages.length ||
+    content.package_catalog?.gallery.length
+      ? ["packages"]
+      : []),
+    ...(content.team_members.some((member) => member.is_founder)
+      ? ["owner"]
+      : []),
+    ...(content.team_members.some((member) => !member.is_founder)
+      ? ["crew"]
+      : []),
     ...(content.testimonials.length ? ["stories"] : []),
     ...(contact ? ["contact"] : []),
   ];

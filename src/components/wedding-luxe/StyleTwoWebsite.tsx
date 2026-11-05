@@ -1,3 +1,6 @@
+import PackageShowcase from "@/components/wedding/packages/PackageShowcase";
+import { splitCrew } from "@/lib/wedding/crew";
+import LuxeOwner from "./LuxeOwner";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { getTranslations } from "next-intl/server";
 import type { WeddingPageContent } from "@/lib/wedding/page-content";
@@ -33,6 +36,7 @@ export default async function StyleTwoWebsite({
 }) {
   const t = await getTranslations("wedding");
   const sections = publishedSections(content);
+  const { owner, crew } = splitCrew(content.team_members);
   return (
     <div
       id="livina-luxe"
@@ -73,9 +77,15 @@ export default async function StyleTwoWebsite({
             title={content.hero.film_title}
           />
         )}
-        {content.team_members.length > 0 && (
-          <LuxeCrew members={content.team_members} preview={false} />
+        {content.package_catalog && (
+          <PackageShowcase
+            catalog={content.package_catalog}
+            settings={content.settings}
+            tone="light"
+          />
         )}
+        {owner && <LuxeOwner member={owner} />}
+        {crew.length > 0 && <LuxeCrew members={crew} preview={false} />}
         {content.testimonials.length > 0 && (
           <LuxeGallery testimonials={content.testimonials} />
         )}

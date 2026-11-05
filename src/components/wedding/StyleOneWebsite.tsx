@@ -1,3 +1,6 @@
+import PackageShowcase from "@/components/wedding/packages/PackageShowcase";
+import { splitCrew } from "@/lib/wedding/crew";
+import WeddingOwner from "./WeddingOwner";
 import { getTranslations } from "next-intl/server";
 import { Montserrat, Playfair_Display } from "next/font/google";
 import Image from "next/image";
@@ -31,6 +34,7 @@ export default async function StyleOneWebsite({
 }) {
   const t = await getTranslations("wedding");
   const sections = publishedSections(content);
+  const { owner, crew } = splitCrew(content.team_members);
   const brand = content.hero.brand_name;
   return (
     <div
@@ -79,9 +83,15 @@ export default async function StyleOneWebsite({
         {content.services.length > 0 && (
           <WeddingServices services={content.services} />
         )}
-        {content.team_members.length > 0 && (
-          <WeddingCrew members={content.team_members} />
+        {content.package_catalog && (
+          <PackageShowcase
+            catalog={content.package_catalog}
+            settings={content.settings}
+            tone="dark"
+          />
         )}
+        {owner && <WeddingOwner member={owner} />}
+        {crew.length > 0 && <WeddingCrew members={crew} />}
         {content.testimonials.length > 0 && (
           <WeddingGallery testimonials={content.testimonials} />
         )}

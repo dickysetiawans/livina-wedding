@@ -1,49 +1,21 @@
-import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+"use client";
+import { useTranslations } from "next-intl";
 import type { WeddingCrewProfile } from "@/lib/wedding/crew";
+import useCrewFilter from "@/hooks/useCrewFilter";
+import StoryEventFilter from "@/components/wedding/StoryEventFilter";
+import LuxePortrait from "./LuxePortrait";
 import styles from "./Luxe.module.css";
-
-interface LuxeCrewProps {
+export default function LuxeCrew({
+  members,
+  preview = false,
+}: {
   members: WeddingCrewProfile[];
-  preview: boolean;
-}
-function Portrait({ member }: { member: WeddingCrewProfile }) {
-  const source =
-    member.photo_url ||
-    (member.photo_media_id ? `/api/crew/photo/${member.photo_media_id}` : null);
-  return (
-    <div className={styles.portrait}>
-      {source ? (
-        <Image
-          src={source}
-          alt={member.name}
-          fill
-          unoptimized
-          sizes="(max-width: 767px) 192px, 224px"
-          className={styles.cover}
-        />
-      ) : (
-        <span className={styles.initials}>
-          {member.name
-            .split(" ")
-            .map((w) => w[0])
-            .slice(0, 2)
-            .join("")}
-        </span>
-      )}
-    </div>
-  );
-}
-export default async function LuxeCrew({ members, preview }: LuxeCrewProps) {
-  const t = await getTranslations("wedding");
-  const l = await getTranslations("luxe");
-  const ordered = [...members].sort(
-    (a, b) =>
-      Number(b.is_founder) - Number(a.is_founder) ||
-      a.sort_order - b.sort_order,
-  );
-  const founder = ordered.find((member) => member.is_founder);
-  const rest = ordered.filter((member) => member.id !== founder?.id);
+  preview?: boolean;
+}) {
+  const t = useTranslations("wedding"),
+    l = useTranslations("luxe"),
+    filter = useCrewFilter(members);
+  if (!members.some((member) => !member.is_founder)) return null;
   return (
     <section
       id="crew"
@@ -56,45 +28,37 @@ export default async function LuxeCrew({ members, preview }: LuxeCrewProps) {
           {l("crewLine1")} <em>{l("crewLine2")}</em>
         </h2>
       </header>
-      {founder && (
-        <>
-          <h2 data-luxe-reveal className={styles.crewGroupTitle}>
-            {t("ownerGroup")}
-          </h2>
-          <article data-luxe-reveal className={styles.founder}>
-            <Portrait member={founder} />
-            <div className={styles.founderCopy}>
-              <span className={styles.eyebrow}>{founder.role_title}</span>
-              <h3>{founder.name}</h3>
-              <span className={styles.smallRule} />
-              <p>{founder.biography}</p>
-              <span className={styles.signature}>{founder.name}</span>
-            </div>
+      <StoryEventFilter
+        kind="positions"
+        events={filter.positions}
+        active={filter.active}
+        onChange={filter.select}
+        tone="light"
+        controls="luxe-crew-results"
+        count={filter.members.length}
+      />
+      <div
+        key={filter.active ?? "all"}
+        id="luxe-crew-results"
+        className={styles.memberGrid}
+      >
+        {filter.members.map((member) => (
+          <article key={member.id} data-luxe-reveal className={styles.member}>
+            <button
+              type="button"
+              className={styles.memberPhotoButton}
+              aria-label={member.name}
+            >
+              <LuxePortrait member={member} />
+            </button>
+            {filter.active === null && (
+              <span className={styles.positionBadge}>{member.role_title}</span>
+            )}
+            <h3>{member.name}</h3>
+            <p>{member.biography}</p>
           </article>
-        </>
-      )}
-      {rest.length > 0 && (
-        <>
-          <h2 data-luxe-reveal className={styles.crewGroupTitle}>
-            {t("crewGroup")}
-          </h2>
-          <div className={styles.memberGrid}>
-            {rest.map((member) => (
-              <article
-                key={member.id}
-                data-luxe-reveal
-                className={styles.member}
-              >
-                <Portrait member={member} />
-                <span className={styles.eyebrow}>{member.role_title}</span>
-                <h3>{member.name}</h3>
-                <p>{member.biography}</p>
-              </article>
-            ))}
-          </div>
-        </>
-      )}
-      {!members.length && <p>{t("crewEmpty")}</p>}
+        ))}
+      </div>
       {preview && <p className={styles.credit}>{t("crewPreview")}</p>}
     </section>
   );

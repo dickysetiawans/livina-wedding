@@ -1,5 +1,18 @@
 # Supabase Livina Wedding — modul The Crew
 
+Crew event di Client: jalankan migration 202611060002_testimonial_crew.sql setelah 202611060001 lalu deploy frontend. Modal kini memakai portal body dan filter Paket sejajar tombol PDF. Lihat [panduan](ADMIN-SETUP.md). Tidak perlu deploy ulang Edge Function.
+
+Pertanyaan WhatsApp Paket: jalankan migration 202611060001_package_inquiry_template.sql setelah 004 lalu deploy frontend. Template pesan di Pengaturan Website; kontak dari WhatsApp aktif. PDF seluruh paket sekarang memakai Poppins. Tidak perlu deploy ulang Edge Function. Lihat [panduan](ADMIN-SETUP.md).
+
+Paket publik (6 November): jalankan migration 202611050004_public_packages.sql setelah 003 lalu deploy frontend. Berlaku di kedua style dan `/` sesuai template aktif; hanya data published/master aktif yang tampil. Lihat [panduan](ADMIN-SETUP.md).
+
+Admin Paket: jalankan migration 202611050003_admin_packages.sql setelah 001/002, lalu deploy frontend. Empat menu: Kategori Paket, Subkategori Paket, Paket (harga/benefit), Galeri Paket. Lihat [panduan](ADMIN-SETUP.md). Tahap ini belum mengubah kedua template publik.
+
+Pembaruan filter publik: terapkan migration 202611050002_public_gallery_order.sql setelah 001 lalu deploy frontend. Client tampil 6 per tahap per filter, terbaru dahulu; Crew memakai filter Jabatan dan Owner terpisah. Lihat [panduan](ADMIN-SETUP.md).
+
+Pembaruan 5 November: modul Acara/Jabatan, dropdown Client/Crew dan filter acara di kedua template. Terapkan hanya migration baru 202611050001_events_positions.sql lalu deploy frontend; Edge Function tidak berubah. Jabatan lama dihubungkan otomatis; testimoni lama tetap di Semua sampai dipilih acaranya. Lihat [panduan](ADMIN-SETUP.md). Jangan menjalankan seed pada produksi yang sudah diisi.
+
+
 Pembaruan terakhir: foto 422 pada WebP berprofil ICC diperbaiki. Video baru memakai MP4 H.264 direct (20 MB/60 detik/Full HD) dengan poster lokal otomatis dan upload saat Simpan; tidak menunggu worker. Tidak ada SQL tambahan jika migration 202610290001 sudah sukses. Deploy ulang organizer-api dan frontend; lihat [panduan terbaru](ADMIN-SETUP.md).
 
 

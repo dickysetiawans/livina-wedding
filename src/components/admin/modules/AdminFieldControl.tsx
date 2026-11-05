@@ -1,10 +1,15 @@
 "use client";
 import { useTranslations } from "next-intl";
+import TestimonialCrewEditor from "./TestimonialCrewEditor";
+import type { CrewAssignment } from "@/lib/admin/modules";
 import Input from "@/components/form/input/InputField";
 import Label from "@/components/form/Label";
 import CrewPhotoPicker from "@/components/crew/CrewPhotoPicker";
 import type { AdminField, AdminRecord, AdminValue } from "@/lib/admin/modules";
 import WhatsAppContactsEditor from "./WhatsAppContactsEditor";
+import MasterDataSelect from "./MasterDataSelect";
+import BenefitsEditor from "./BenefitsEditor";
+import type { WhatsAppContact } from "@/lib/wedding/whatsapp";
 import VideoPicker from "./VideoPicker";
 
 export const selectClass =
@@ -44,10 +49,54 @@ export default function AdminFieldControl({
     : undefined;
   const locked = disabled || Boolean(editing && field.createOnly);
   let control;
-  if (field.type === "contacts")
+  if (field.type === "crew_assignments")
+    control = (
+      <TestimonialCrewEditor
+        value={Array.isArray(value) ? (value as CrewAssignment[]) : []}
+        disabled={locked}
+        permissions={permissions}
+        onChange={onChange}
+        onBusyChange={onBusyChange}
+      />
+    );
+  else if (field.type === "benefits")
+    control = (
+      <BenefitsEditor
+        value={Array.isArray(value) ? (value as string[]) : []}
+        disabled={locked}
+        onChange={onChange}
+      />
+    );
+  else if (field.type === "package_kind")
+    control = (
+      <select
+        id={id}
+        name={field.key}
+        value={String(value || "all_in")}
+        disabled={locked}
+        className={selectClass}
+        onChange={(event) => onChange(event.target.value)}
+      >
+        <option value="all_in">{t("allIn")}</option>
+        <option value="non_venue">{t("nonVenue")}</option>
+      </select>
+    );
+  else if (field.type === "event")
+    control = (
+      <MasterDataSelect
+        table="events"
+        id={id}
+        name={field.key}
+        value={typeof value === "string" ? value : ""}
+        disabled={locked}
+        required={field.required}
+        onChange={onChange}
+      />
+    );
+  else if (field.type === "contacts")
     control = (
       <WhatsAppContactsEditor
-        value={Array.isArray(value) ? value : []}
+        value={Array.isArray(value) ? (value as WhatsAppContact[]) : []}
         disabled={locked}
         onChange={onChange}
       />

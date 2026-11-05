@@ -47,7 +47,7 @@ export async function exportCrop(
   name: string,
 ): Promise<File> {
   const { sx, sy, sw, sh } = cropGeometry(input);
-  const ratio = Math.min(1, 1600 / Math.max(sw, sh));
+  const ratio = Math.min(1, 1920 / Math.max(sw, sh));
   const canvas = document.createElement("canvas");
   canvas.width = Math.max(1, Math.round(sw * ratio));
   canvas.height = Math.max(1, Math.round(sh * ratio));
@@ -59,7 +59,7 @@ export async function exportCrop(
       (result) =>
         result ? resolve(result) : reject(new Error("CROP_UNAVAILABLE")),
       "image/webp",
-      0.9,
+      0.95,
     ),
   );
   if (blob.type !== "image/webp") throw new Error("CROP_UNAVAILABLE");

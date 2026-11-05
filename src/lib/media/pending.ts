@@ -39,16 +39,22 @@ export class PendingPhotos {
       }
       return entry.saved;
     };
-    for (const key of Object.keys(values)) {
-      if (
-        typeof values[key] === "string" &&
-        this.files.has(values[key] as string)
-      ) {
-        result[key as keyof T] = (await resolve(
-          values[key] as string,
-        )) as T[keyof T];
+    const walk = async (value: unknown): Promise<unknown> => {
+      if (typeof value === "string" && this.files.has(value))
+        return resolve(value);
+      if (Array.isArray(value)) {
+        const rows = [];
+        for (const row of value) rows.push(await walk(row));
+        return rows;
       }
-    }
-    return result;
+      if (value && typeof value === "object") {
+        const rows: Record<string, unknown> = {};
+        for (const [key, item] of Object.entries(value))
+          rows[key] = await walk(item);
+        return rows;
+      }
+      return value;
+    };
+    return (await walk(result)) as T;
   }
 }

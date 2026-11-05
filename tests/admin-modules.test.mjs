@@ -26,7 +26,7 @@ test('payload users edit tidak mengubah email Auth atau menerima field otorisasi
  assert.equal('email' in result,false);assert.equal('auth_user_id' in result,false);assert.equal('id' in result,false);assert.equal('permissions' in result,false);assert.equal(result.role_id,uuid);
 });
 test('client draft tanpa media diterima; publikasi membutuhkan foto dan persetujuan',()=>{
- const value={...config.emptyValues('clients'),couple_name:'Pasangan uji',venue:'Venue uji',excerpt:'Ulasan uji'};
+ const value={...config.emptyValues('clients'),couple_name:'Pasangan uji',event_id:uuid,venue:'Venue uji',excerpt:'Ulasan uji'};
  assert.deepEqual(config.validateAdminValues('clients',value),{});
  const issues=config.validateAdminValues('clients',{...value,status:'published'});
  assert.equal(issues.photo_media_id,'required');assert.equal(issues.publication_consent,'consent');

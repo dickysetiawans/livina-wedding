@@ -4,7 +4,9 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  outputFileTracingIncludes: {
+    "/api/wedding/packages/pdf": ["./public/fonts/poppins/*.ttf"],
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,

@@ -69,3 +69,24 @@ export function publicWhatsApp(
       ]
     : [];
 }
+
+export const inquiryTokens = [
+  "sapaan",
+  "nama_kontak",
+  "kategori",
+  "subkategori",
+  "jenis_paket",
+  "nama_paket",
+  "harga",
+  "benefit",
+];
+export function validInquiryTemplate(value: unknown) {
+  return (
+    value == null ||
+    (typeof value === "string" &&
+      value.length <= 4000 &&
+      [...value.matchAll(/\{([^{}]+)\}/g)].every((match) =>
+        inquiryTokens.includes(match[1]),
+      ))
+  );
+}

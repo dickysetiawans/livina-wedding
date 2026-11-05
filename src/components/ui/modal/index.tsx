@@ -1,5 +1,6 @@
 "use client";
 
+import { createPortal } from "react-dom";
 import { useEffect, useRef } from "react";
 
 let openModals = 0;
@@ -53,13 +54,13 @@ export const Modal: React.FC<ModalProps> = ({
     };
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  if (!isOpen || typeof document === "undefined") return null;
 
   const contentClasses = isFullscreen
     ? "w-full h-full"
     : "relative w-full rounded-3xl bg-white  dark:bg-gray-900";
 
-  return (
+  return createPortal(
     <div className="modal fixed inset-0 z-99999 flex items-center justify-center overflow-y-auto">
       {!isFullscreen && (
         <div
@@ -95,6 +96,7 @@ export const Modal: React.FC<ModalProps> = ({
         )}
         <div>{children}</div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 };

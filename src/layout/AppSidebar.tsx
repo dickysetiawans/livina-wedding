@@ -34,6 +34,43 @@ export default function AppSidebar({ permissions, role }: AppSidebarProps) {
       key: "content",
       items: [
         {
+          key: "package_categories",
+          href: "/admin/package_categories",
+          permission: "package_categories.read",
+          Icon: ListIcon,
+        },
+        {
+          key: "package_subcategories",
+          href: "/admin/package_subcategories",
+          permission: "package_subcategories.read",
+          Icon: ListIcon,
+        },
+        {
+          key: "packages",
+          href: "/admin/packages",
+          permission: "packages.read",
+          Icon: ListIcon,
+        },
+        {
+          key: "package_gallery",
+          href: "/admin/package_gallery",
+          permission: "package_gallery.read",
+          Icon: ListIcon,
+        },
+
+        {
+          key: "events",
+          href: "/admin/events",
+          permission: "events.read",
+          Icon: ListIcon,
+        },
+        {
+          key: "positions",
+          href: "/admin/positions",
+          permission: "positions.read",
+          Icon: GroupIcon,
+        },
+        {
           key: "crew",
           href: "/admin/crew",
           permission: "team_members.read",
