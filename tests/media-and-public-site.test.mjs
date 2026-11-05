@@ -75,7 +75,7 @@ test('akar / merender template terpilih secara langsung tanpa membutuhkan redire
 const stub=()=>null;const translate=async()=>key=>key;
 const grouping=await load('../src/lib/wedding/crew.ts');
 const styleOne=await load('../src/components/wedding/StyleOneWebsite.tsx',{
- 'next-intl/server':{getTranslations:translate},'next/font/google':{Montserrat:()=>({variable:'sans'}),Playfair_Display:()=>({variable:'serif'})},'next/image':{default:stub},
+ 'next-intl/server':{getTranslations:translate},'next/font/local':{default:()=>({variable:'local-font'})},'next/image':{default:stub},
  '@/components/wedding/packages/PackageShowcase':{default:stub},'@/lib/wedding/crew':grouping,'./WeddingOwner':{default:stub},'@/lib/wedding/sections':sections,'./WeddingHero':{default:stub},'./WeddingServices':{default:stub},'./WeddingCrew':{default:stub},'./WeddingGallery':{default:stub},'./WeddingContact':{default:stub},'./WeddingMotion':{default:stub},'./PublishedEmpty':{default:stub},'./Wedding.module.css':{default:{}}
 });
 test('render tanpa data tidak menyertakan heading, section atau link ke crew kosong',async()=>{

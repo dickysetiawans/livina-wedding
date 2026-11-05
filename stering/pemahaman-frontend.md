@@ -1,5 +1,13 @@
 # Pemeriksaan frontend Livina — 24 Oktober 2026
 
+## Build Vercel: font lokal — 6 November 2026
+
+Mengganti seluruh next/font/google di RootLayout, StyleOneWebsite dan StyleTwoWebsite dengan next/font/local. Outfit, Montserrat, Playfair Display, Cormorant Garamond normal/italic dan Manrope disimpan di public/fonts bersama lisensi OFL resmi google/fonts. Variabel CSS dan keluarga font tetap sama. Build tidak lagi memakai loader Google Fonts maupun mengunduh CSS/font Google saat build, menghindari jalur resolusi @vercel/turbopack-next/internal/font/google/font yang gagal pada deployment pengguna. Poppins PDF lokal existing dipertahankan.
+
+Upload/commit seluruh perubahan komponen serta direktori font baru (file TTF dan OFL), lalu deploy commit terbaru ke Vercel. Bila build sebelumnya tersimpan di cache, redeploy tanpa memakai build cache. Tidak perlu mengubah Supabase, SQL, Edge Function, env/secret, atau menambah package. Build command tetap npm run build (Turbopack); bukan fallback ke webpack.
+
+Tes provider/root/public site terkait lulus 11/11. Build produksi Turbopack dan TypeScript lulus; lint file perubahan diperiksa.
+
 ## Crew bertugas di testimoni dan portal modal — 6 November 2026
 
 Layout Paket: baris kategori di kiri, Unduh semua paket di kanan; subkategori dan jenis di baris bawah, sejajar area card. Pada mobile susunan ditumpuk agar tombol tetap mudah ditekan. Tombol PDF tersembunyi bila tidak ada paket untuk diunduh.

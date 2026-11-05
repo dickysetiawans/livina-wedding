@@ -2,7 +2,7 @@ import PackageShowcase from "@/components/wedding/packages/PackageShowcase";
 import { splitCrew } from "@/lib/wedding/crew";
 import WeddingOwner from "./WeddingOwner";
 import { getTranslations } from "next-intl/server";
-import { Montserrat, Playfair_Display } from "next/font/google";
+import localFont from "next/font/local";
 import Image from "next/image";
 import type { WeddingPageContent } from "@/lib/wedding/page-content";
 import { publishedSections } from "@/lib/wedding/sections";
@@ -15,15 +15,15 @@ import WeddingMotion from "./WeddingMotion";
 import PublishedEmpty from "./PublishedEmpty";
 import styles from "./Wedding.module.css";
 
-const sans = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+const sans = localFont({
+  src: "../../../public/fonts/montserrat/Regular.ttf",
+  weight: "100 900",
   display: "swap",
   variable: "--font-public",
 });
-const editorial = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400"],
+const editorial = localFont({
+  src: "../../../public/fonts/playfairdisplay/Regular.ttf",
+  weight: "400 900",
   display: "swap",
   variable: "--font-wedding-serif",
 });

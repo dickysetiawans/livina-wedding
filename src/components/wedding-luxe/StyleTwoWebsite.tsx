@@ -1,7 +1,7 @@
 import PackageShowcase from "@/components/wedding/packages/PackageShowcase";
 import { splitCrew } from "@/lib/wedding/crew";
 import LuxeOwner from "./LuxeOwner";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import localFont from "next/font/local";
 import { getTranslations } from "next-intl/server";
 import type { WeddingPageContent } from "@/lib/wedding/page-content";
 import { publishedSections } from "@/lib/wedding/sections";
@@ -16,16 +16,25 @@ import LuxeContact from "./LuxeContact";
 import LuxeMotion from "./LuxeMotion";
 import styles from "./Luxe.module.css";
 
-const display = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
+const display = localFont({
+  src: [
+    {
+      path: "../../../public/fonts/cormorantgaramond/Regular.ttf",
+      weight: "300 700",
+      style: "normal",
+    },
+    {
+      path: "../../../public/fonts/cormorantgaramond/Italic.ttf",
+      weight: "300 700",
+      style: "italic",
+    },
+  ],
   variable: "--font-luxe-display",
   display: "swap",
 });
-const sans = Manrope({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+const sans = localFont({
+  src: "../../../public/fonts/manrope/Regular.ttf",
+  weight: "200 800",
   variable: "--font-luxe-sans",
   display: "swap",
 });
