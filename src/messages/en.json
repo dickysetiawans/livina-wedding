@@ -201,7 +201,10 @@
     "crewAllPositions": "Semua",
     "crewResultCount": "{count} anggota ditampilkan.",
     "eventCrew": "Crew yang bertugas",
-    "eventCrewVideo": "Video {name} saat event"
+    "eventCrewVideo": "Video {name} saat event",
+    "seoBrand": "Livina Wedding",
+    "seoTitle": "{brand} | Wedding Organizer & Wedding Planner",
+    "seoDescription": "Livina Wedding membantu merencanakan dan mengoordinasikan hari pernikahan Anda. Jelajahi layanan, pilihan paket, tim Crew, dan cerita pasangan kami."
   },
   "crew": {
     "previewHint": "Pratinjau tampilan. Penyimpanan dan unggah foto tersedia setelah Supabase Livina dikonfigurasi.",

@@ -1,3 +1,4 @@
+import { publicMetadata, siteIdentity, safeJsonLd } from "@/lib/wedding/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { activeTemplate } from "@/lib/wedding/template";
 import { weddingPageContent } from "@/lib/wedding/page-content";
@@ -7,10 +8,11 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata() {
   const { data } = await weddingPageContent();
   const t = await getTranslations("wedding");
-  return {
-    title: data.hero.brand_name || t("metaTitle"),
-    description: data.hero.hero_subtitle || "",
-  };
+  return publicMetadata(data, {
+    brand: t("seoBrand"),
+    title: t.raw("seoTitle"),
+    description: t("seoDescription"),
+  });
 }
 
 export default async function HomePage({
@@ -24,9 +26,22 @@ export default async function HomePage({
     activeTemplate(),
     weddingPageContent(),
   ]);
-  return template === "style-2" ? (
-    <StyleTwoWebsite content={content} />
-  ) : (
-    <StyleOneWebsite content={content} />
+  const identity = siteIdentity(content);
+  const page =
+    template === "style-2" ? (
+      <StyleTwoWebsite content={content} />
+    ) : (
+      <StyleOneWebsite content={content} />
+    );
+  return (
+    <>
+      {identity && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(identity) }}
+        />
+      )}
+      {page}
+    </>
   );
 }

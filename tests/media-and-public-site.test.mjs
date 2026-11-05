@@ -61,14 +61,15 @@ test('navigasi hanya berisi bagian yang mempunyai konten atau kontak',async()=>{
  data.settings.contact_email='hello@example.test';assert.deepEqual(sections.publishedSections(data).ids,['services','stories','contact']);
 });
 let template='style-1';let requestedLocale='';const one=()=>null,two=()=>null;
+const seo=await load('../src/lib/wedding/seo.ts');
 const home=await load('../src/app/[locale]/(full-width-pages)/page.tsx',{
- 'next-intl/server':{setRequestLocale:value=>{requestedLocale=value;},getTranslations:async()=>key=>key},
+ '@/lib/wedding/seo':seo,'next-intl/server':{setRequestLocale:value=>{requestedLocale=value;},getTranslations:async()=>key=>key},
  '@/lib/wedding/template':{activeTemplate:async()=>template},'@/lib/wedding/page-content':provider,
  '@/components/wedding/StyleOneWebsite':{default:one},'@/components/wedding-luxe/StyleTwoWebsite':{default:two}
 });
 test('akar / merender template terpilih secara langsung tanpa membutuhkan redirect',async()=>{
  for(const [code,component] of [['style-1',one],['style-2',two]]){
-  template=code;const page=await home.default({params:Promise.resolve({locale:'en'})});assert.equal(page.type,component);assert.equal(page.props.content.hero.brand_name,'Brand asli');assert.equal(requestedLocale,'en');
+  template=code;const page=await home.default({params:Promise.resolve({locale:'en'})});const actual=page.props.children.find(child=>child?.type===component);assert.equal(actual.type,component);assert.equal(actual.props.content.hero.brand_name,'Brand asli');assert.equal(requestedLocale,'en');
  }
 });
 

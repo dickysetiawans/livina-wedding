@@ -1,5 +1,15 @@
 # Pemeriksaan frontend Livina — 24 Oktober 2026
 
+## SEO domain utama — 6 November 2026
+
+Domain canonical: https://livinawedding.vercel.app/. Root dan kedua route template memakai metadata judul/deskripsi, canonical, Open Graph dan Twitter dari data published yang sama. Template style-1/style-2 tetap dapat dibuka tetapi menunjuk canonical root. sitemap.xml hanya menyertakan root; tidak memakai waktu modifikasi palsu tiap request. robots.txt mengizinkan publik dan membatasi jalur admin/API/auth; metadata default layout noindex agar halaman demo bawaan tidak dipromosikan ke Google. Halaman publik mengoverride index ketika site_settings published tersedia; konten kosong memakai noindex.
+
+Root menyertakan Organization dan WebSite JSON-LD (nama, domain, logo, email dan sameAs dari konten published). Tidak mengarang alamat, ulasan/rating numerik, atau area layanan. JSON-LD mengescape karakter < untuk mencegah penutupan tag script oleh input. Judul memakai Livina Wedding | Wedding Organizer & Wedding Planner, deskripsi ditambah hero_subtitle admin. Logo sosial memakai logo Livina statis yang sudah tersedia. Semua copy baru ditambahkan ke dictionary en.
+
+Penerapan: deploy frontend terbaru, tanpa SQL/Edge Function/secret baru. Sesudah deploy, periksa /robots.txt dan /sitemap.xml, lalu tambahkan properti URL-prefix https://livinawedding.vercel.app/ di Google Search Console (untuk subdomain Vercel, bukan properti DNS domain vercel.app). Pemilik perlu menyelesaikan verifikasi; bila memakai tag HTML, kirim nilai token meta google-site-verification untuk dipasang, jangan kirim password. Setelah properti terverifikasi, submit sitemap.xml dan lakukan URL Inspection untuk root. Agen tidak mendaftarkan akun atau mengirim sitemap ke Google pada langkah coding ini. SEO tidak menjamin indeks/peringkat pertama.
+
+Verifikasi: build produksi/TypeScript lulus, 11 tes provider/root existing dan 3 tes SEO baru lulus, meliputi domain/canonical, halaman kosong noindex, schema tanpa data fiktif, escape JSON-LD dan sitemap/robots. Domain cloud belum dideploy oleh agen.
+
 ## Build Vercel: font lokal — 6 November 2026
 
 Mengganti seluruh next/font/google di RootLayout, StyleOneWebsite dan StyleTwoWebsite dengan next/font/local. Outfit, Montserrat, Playfair Display, Cormorant Garamond normal/italic dan Manrope disimpan di public/fonts bersama lisensi OFL resmi google/fonts. Variabel CSS dan keluarga font tetap sama. Build tidak lagi memakai loader Google Fonts maupun mengunduh CSS/font Google saat build, menghindari jalur resolusi @vercel/turbopack-next/internal/font/google/font yang gagal pada deployment pengguna. Poppins PDF lokal existing dipertahankan.

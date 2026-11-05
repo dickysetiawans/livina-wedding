@@ -19,6 +19,7 @@ const outfit = localFont({
 });
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: false },
   icons: {
     icon: [{ url: "/images/logo-livina.png", type: "image/png" }],
     shortcut: "/images/logo-livina.png",
